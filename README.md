@@ -185,7 +185,7 @@ cd HackerTracker
 
 3.	Run the project:
 
-    Click "run" in eclipse in the MainPage.java java
+    Click "run" in eclipse in the MainPage.java
 
 <br>
 
