@@ -153,6 +153,7 @@ Completing questions
 	3.	Use the checkbox to mark question as completed
 
 View you progress
+
 	1.	Select the progress bar icon
 	2.	Navigate through the milestones to view number of questions completed
 
