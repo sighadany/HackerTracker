@@ -1,0 +1,31 @@
+# Eclipse-specific files
+.settings/
+.project
+.classpath
+
+# MacOS-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+
+# Java-related files
+*.class
+*.jar
+*.war
+*.ear
+
+# Build directories
+bin/
+build/
+
+# Maven/Gradle specific files
+target/
+.gradle/
+build/
+
+# IDE-specific directories and files
+.idea/
+*.iml
+.vscode/
+
