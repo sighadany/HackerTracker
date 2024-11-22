@@ -1,0 +1,1052 @@
+[
+    {
+        "topic_name":"1D DP",
+        "topic_question_questionname":"Climbing Stairs",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/climbing-stairs\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Dynamic Programming, Math, Memoization"
+    },
+    {
+        "topic_name":"1D DP",
+        "topic_question_questionname":"Coin Change",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/coin-change\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Breadth-First Search, Dynamic Programming"
+    },
+    {
+        "topic_name":"1D DP",
+        "topic_question_questionname":"House Robber",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/house-robber\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming"
+    },
+    {
+        "topic_name":"1D DP",
+        "topic_question_questionname":"Longest Increasing Subsequence",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/longest-increasing-subsequence\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search, Dynamic Programming"
+    },
+    {
+        "topic_name":"1D DP",
+        "topic_question_questionname":"Word Break",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/word-break\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Hash Table, Memoization, String, Trie"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Best Time to Buy and Sell Stock",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/best-time-to-buy-and-sell-stock\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Best Time to Buy and Sell Stock II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/best-time-to-buy-and-sell-stock-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Greedy"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Candy",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/candy\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Greedy"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Find the Index of the First Occurrence in a String",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-the-index-of-the-first-occurrence-in-a-string\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String, String Matching, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Gas Station",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/gas-station\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Greedy"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"H-Index",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/h-index\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Counting Sort, Sorting"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Insert Delete GetRandom O(1)",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/insert-delete-getrandom-o1\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Design, Hash Table, Math, Randomized"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Integer to Roman",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/integer-to-roman\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Math, String"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Jump Game",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/jump-game\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Greedy"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Jump Game II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/jump-game-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Greedy"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Length of Last Word",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/length-of-last-word\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Longest Common Prefix",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/longest-common-prefix\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String, Trie"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Majority Element",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/majority-element\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Counting, Divide and Conquer, Hash Table, Sorting"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Merge Sorted Array",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/merge-sorted-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Sorting, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Product of Array Except Self",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/product-of-array-except-self\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Prefix Sum"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Remove Duplicates from Sorted Array",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/remove-duplicates-from-sorted-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Remove Duplicates from Sorted Array II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/remove-duplicates-from-sorted-array-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Remove Element",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/remove-element\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Reverse Words in a String",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/reverse-words-in-a-string\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Roman to Integer",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/roman-to-integer\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Math, String"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Rotate Array",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/rotate-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Math, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Text Justification",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/text-justification\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Simulation, String"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Trapping Rain Water",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/trapping-rain-water\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Monotonic Stack, Stack, Two Pointers"
+    },
+    {
+        "topic_name":"Array \/ String",
+        "topic_question_questionname":"Zigzag Conversion",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/zigzag-conversion\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Combination Sum",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/combination-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Backtracking"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Combinations",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/combinations\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Backtracking"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Generate Parentheses",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/generate-parentheses\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Backtracking, Dynamic Programming, String"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Letter Combinations of a Phone Number",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/letter-combinations-of-a-phone-number\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Backtracking, Hash Table, String"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"N-Queens II",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/n-queens-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Backtracking"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Permutations",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/permutations\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Backtracking"
+    },
+    {
+        "topic_name":"Backtracking",
+        "topic_question_questionname":"Word Search",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/word-search\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Backtracking, Matrix, String"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Find First and Last Position of Element in Sorted Array",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-first-and-last-position-of-element-in-sorted-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Find Minimum in Rotated Sorted Array",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-minimum-in-rotated-sorted-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Find Peak Element",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-peak-element\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Median of Two Sorted Arrays",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/median-of-two-sorted-arrays\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search, Divide and Conquer"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Search Insert Position",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/search-insert-position\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Search a 2D Matrix",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/search-a-2d-matrix\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search, Matrix"
+    },
+    {
+        "topic_name":"Binary Search",
+        "topic_question_questionname":"Search in Rotated Sorted Array",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/search-in-rotated-sorted-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search"
+    },
+    {
+        "topic_name":"Binary Search Tree",
+        "topic_question_questionname":"Kth Smallest Element in a BST",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/kth-smallest-element-in-a-bst\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search Tree, Binary Tree, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Search Tree",
+        "topic_question_questionname":"Minimum Absolute Difference in BST",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-absolute-difference-in-bst\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search Tree, Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Search Tree",
+        "topic_question_questionname":"Validate Binary Search Tree",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/validate-binary-search-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search Tree, Binary Tree, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree BFS",
+        "topic_question_questionname":"Average of Levels in Binary Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/average-of-levels-in-binary-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree BFS",
+        "topic_question_questionname":"Binary Tree Level Order Traversal",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/binary-tree-level-order-traversal\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree BFS",
+        "topic_question_questionname":"Binary Tree Right Side View",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/binary-tree-right-side-view\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree BFS",
+        "topic_question_questionname":"Binary Tree Zigzag Level Order Traversal",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/binary-tree-zigzag-level-order-traversal\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Binary Search Tree Iterator",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/binary-search-tree-iterator\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search Tree, Binary Tree, Design, Iterator, Stack, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Binary Tree Maximum Path Sum",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/binary-tree-maximum-path-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Depth-First Search, Dynamic Programming, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Construct Binary Tree from Inorder and Postorder Traversal",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/construct-binary-tree-from-inorder-and-postorder-traversal\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Tree, Divide and Conquer, Hash Table, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Construct Binary Tree from Preorder and Inorder Traversal",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/construct-binary-tree-from-preorder-and-inorder-traversal\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Tree, Divide and Conquer, Hash Table, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Count Complete Tree Nodes",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/count-complete-tree-nodes\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search, Binary Tree, Bit Manipulation, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Flatten Binary Tree to Linked List",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/flatten-binary-tree-to-linked-list\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Depth-First Search, Linked List, Stack, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Invert Binary Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/invert-binary-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Lowest Common Ancestor of a Binary Tree",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/lowest-common-ancestor-of-a-binary-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Maximum Depth of Binary Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/maximum-depth-of-binary-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Path Sum",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/path-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Populating Next Right Pointers in Each Node II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/populating-next-right-pointers-in-each-node-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Linked List, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Same Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/same-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Sum Root to Leaf Numbers",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/sum-root-to-leaf-numbers\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Binary Tree General",
+        "topic_question_questionname":"Symmetric Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/symmetric-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Tree, Breadth-First Search, Depth-First Search, Tree"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Add Binary",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/add-binary\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Bit Manipulation, Math, Simulation, String"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Bitwise AND of Numbers Range",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/bitwise-and-of-numbers-range\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Bit Manipulation"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Number of 1 Bits",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/number-of-1-bits\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Bit Manipulation, Divide and Conquer"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Reverse Bits",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/reverse-bits\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Bit Manipulation, Divide and Conquer"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Single Number",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/single-number\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Bit Manipulation"
+    },
+    {
+        "topic_name":"Bit Manipulation",
+        "topic_question_questionname":"Single Number II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/single-number-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Bit Manipulation"
+    },
+    {
+        "topic_name":"Divide & Conquer",
+        "topic_question_questionname":"Construct Quad Tree",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/construct-quad-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Divide and Conquer, Matrix, Tree"
+    },
+    {
+        "topic_name":"Divide & Conquer",
+        "topic_question_questionname":"Convert Sorted Array to Binary Search Tree",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/convert-sorted-array-to-binary-search-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search Tree, Binary Tree, Divide and Conquer, Tree"
+    },
+    {
+        "topic_name":"Divide & Conquer",
+        "topic_question_questionname":"Merge k Sorted Lists",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/merge-k-sorted-lists\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Divide and Conquer, Heap (Priority Queue), Linked List, Merge Sort"
+    },
+    {
+        "topic_name":"Divide & Conquer",
+        "topic_question_questionname":"Sort List",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/sort-list\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Divide and Conquer, Linked List, Merge Sort, Sorting, Two Pointers"
+    },
+    {
+        "topic_name":"Graph BFS",
+        "topic_question_questionname":"Minimum Genetic Mutation",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-genetic-mutation\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Breadth-First Search, Hash Table, String"
+    },
+    {
+        "topic_name":"Graph BFS",
+        "topic_question_questionname":"Snakes and Ladders",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/snakes-and-ladders\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Breadth-First Search, Matrix"
+    },
+    {
+        "topic_name":"Graph BFS",
+        "topic_question_questionname":"Word Ladder",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/word-ladder\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Breadth-First Search, Hash Table, String"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Clone Graph",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/clone-graph\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Breadth-First Search, Depth-First Search, Graph, Hash Table"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Course Schedule",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/course-schedule\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Breadth-First Search, Depth-First Search, Graph, Topological Sort"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Course Schedule II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/course-schedule-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Breadth-First Search, Depth-First Search, Graph, Topological Sort"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Evaluate Division",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/evaluate-division\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Breadth-First Search, Depth-First Search, Graph, Shortest Path, String, Union Find"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Number of Islands",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/number-of-islands\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Breadth-First Search, Depth-First Search, Matrix, Union Find"
+    },
+    {
+        "topic_name":"Graph General",
+        "topic_question_questionname":"Surrounded Regions",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/surrounded-regions\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Breadth-First Search, Depth-First Search, Matrix, Union Find"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Contains Duplicate II",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/contains-duplicate-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table, Sliding Window"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Group Anagrams",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/group-anagrams\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table, Sorting, String"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Happy Number",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/happy-number\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Math, Two Pointers"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Isomorphic Strings",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/isomorphic-strings\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, String"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Longest Consecutive Sequence",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/longest-consecutive-sequence\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table, Union Find"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Ransom Note",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/ransom-note\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Counting, Hash Table, String"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Two Sum",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/two-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Valid Anagram",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/valid-anagram\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Sorting, String"
+    },
+    {
+        "topic_name":"Hashmap",
+        "topic_question_questionname":"Word Pattern",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/word-pattern\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, String"
+    },
+    {
+        "topic_name":"Heap",
+        "topic_question_questionname":"Find K Pairs with Smallest Sums",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-k-pairs-with-smallest-sums\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Heap (Priority Queue)"
+    },
+    {
+        "topic_name":"Heap",
+        "topic_question_questionname":"Find Median from Data Stream",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/find-median-from-data-stream\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Data Stream, Design, Heap (Priority Queue), Sorting, Two Pointers"
+    },
+    {
+        "topic_name":"Heap",
+        "topic_question_questionname":"IPO",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/ipo\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Greedy, Heap (Priority Queue), Sorting"
+    },
+    {
+        "topic_name":"Heap",
+        "topic_question_questionname":"Kth Largest Element in an Array",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/kth-largest-element-in-an-array\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Divide and Conquer, Heap (Priority Queue), Quickselect, Sorting"
+    },
+    {
+        "topic_name":"Intervals",
+        "topic_question_questionname":"Insert Interval",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/insert-interval\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array"
+    },
+    {
+        "topic_name":"Intervals",
+        "topic_question_questionname":"Merge Intervals",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/merge-intervals\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Sorting"
+    },
+    {
+        "topic_name":"Intervals",
+        "topic_question_questionname":"Minimum Number of Arrows to Burst Balloons",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-number-of-arrows-to-burst-balloons\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Greedy, Sorting"
+    },
+    {
+        "topic_name":"Intervals",
+        "topic_question_questionname":"Summary Ranges",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/summary-ranges\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array"
+    },
+    {
+        "topic_name":"Kadane's Algorithm",
+        "topic_question_questionname":"Maximum Subarray",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/maximum-subarray\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Divide and Conquer, Dynamic Programming"
+    },
+    {
+        "topic_name":"Kadane's Algorithm",
+        "topic_question_questionname":"Maximum Sum Circular Subarray",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/maximum-sum-circular-subarray\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Divide and Conquer, Dynamic Programming, Monotonic Queue, Queue"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Add Two Numbers",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/add-two-numbers\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Math, Recursion"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Copy List with Random Pointer",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/copy-list-with-random-pointer\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Linked List"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"LRU Cache",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/lru-cache\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Design, Doubly-Linked List, Hash Table, Linked List"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Linked List Cycle",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/linked-list-cycle\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Linked List, Two Pointers"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Merge Two Sorted Lists",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/merge-two-sorted-lists\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Recursion"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Partition List",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/partition-list\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Two Pointers"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Remove Duplicates from Sorted List II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/remove-duplicates-from-sorted-list-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Two Pointers"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Remove Nth Node From End of List",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/remove-nth-node-from-end-of-list\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Two Pointers"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Reverse Linked List II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/reverse-linked-list-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Reverse Nodes in k-Group",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/reverse-nodes-in-k-group\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Recursion"
+    },
+    {
+        "topic_name":"Linked List",
+        "topic_question_questionname":"Rotate List",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/rotate-list\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Linked List, Two Pointers"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Factorial Trailing Zeroes",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/factorial-trailing-zeroes\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Math"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Max Points on a Line",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/max-points-on-a-line\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Geometry, Hash Table, Math"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Palindrome Number",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/palindrome-number\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Math"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Plus One",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/plus-one\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Math"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Pow(x, n)",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/powx-n\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Math, Recursion"
+    },
+    {
+        "topic_name":"Math",
+        "topic_question_questionname":"Sqrt(x)",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/sqrtx\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Binary Search, Math"
+    },
+    {
+        "topic_name":"Matrix",
+        "topic_question_questionname":"Game of Life",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/game-of-life\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Matrix, Simulation"
+    },
+    {
+        "topic_name":"Matrix",
+        "topic_question_questionname":"Rotate Image",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/rotate-image\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Math, Matrix"
+    },
+    {
+        "topic_name":"Matrix",
+        "topic_question_questionname":"Set Matrix Zeroes",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/set-matrix-zeroes\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table, Matrix"
+    },
+    {
+        "topic_name":"Matrix",
+        "topic_question_questionname":"Spiral Matrix",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/spiral-matrix\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Matrix, Simulation"
+    },
+    {
+        "topic_name":"Matrix",
+        "topic_question_questionname":"Valid Sudoku",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/valid-sudoku\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Hash Table, Matrix"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Best Time to Buy and Sell Stock III",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/best-time-to-buy-and-sell-stock-iii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Best Time to Buy and Sell Stock IV",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/best-time-to-buy-and-sell-stock-iv\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Edit Distance",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/edit-distance\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Dynamic Programming, String"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Interleaving String",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/interleaving-string\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Dynamic Programming, String"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Longest Palindromic Substring",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/longest-palindromic-substring\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Dynamic Programming, String, Two Pointers"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Maximal Square",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/maximal-square\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Matrix"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Minimum Path Sum",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-path-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Matrix"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Triangle",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/triangle\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming"
+    },
+    {
+        "topic_name":"Multidimensional DP",
+        "topic_question_questionname":"Unique Paths II",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/unique-paths-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Dynamic Programming, Matrix"
+    },
+    {
+        "topic_name":"Sliding Window",
+        "topic_question_questionname":"Longest Substring Without Repeating Characters",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/longest-substring-without-repeating-characters\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Sliding Window, String"
+    },
+    {
+        "topic_name":"Sliding Window",
+        "topic_question_questionname":"Minimum Size Subarray Sum",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-size-subarray-sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search, Prefix Sum, Sliding Window"
+    },
+    {
+        "topic_name":"Sliding Window",
+        "topic_question_questionname":"Minimum Window Substring",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/minimum-window-substring\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Sliding Window, String"
+    },
+    {
+        "topic_name":"Sliding Window",
+        "topic_question_questionname":"Substring with Concatenation of All Words",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/substring-with-concatenation-of-all-words\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Hash Table, Sliding Window, String"
+    },
+    {
+        "topic_name":"Stack",
+        "topic_question_questionname":"Basic Calculator",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/basic-calculator\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Math, Recursion, Stack, String"
+    },
+    {
+        "topic_name":"Stack",
+        "topic_question_questionname":"Evaluate Reverse Polish Notation",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/evaluate-reverse-polish-notation\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Math, Stack"
+    },
+    {
+        "topic_name":"Stack",
+        "topic_question_questionname":"Min Stack",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/min-stack\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Design, Stack"
+    },
+    {
+        "topic_name":"Stack",
+        "topic_question_questionname":"Simplify Path",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/simplify-path\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Stack, String"
+    },
+    {
+        "topic_name":"Stack",
+        "topic_question_questionname":"Valid Parentheses",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/valid-parentheses\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Stack, String"
+    },
+    {
+        "topic_name":"Trie",
+        "topic_question_questionname":"Design Add and Search Words Data Structure",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/design-add-and-search-words-data-structure\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Depth-First Search, Design, String, Trie"
+    },
+    {
+        "topic_name":"Trie",
+        "topic_question_questionname":"Implement Trie (Prefix Tree)",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/implement-trie-prefix-tree\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Design, Hash Table, String, Trie"
+    },
+    {
+        "topic_name":"Trie",
+        "topic_question_questionname":"Word Search II",
+        "topic_question_difficulty":"Hard",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/word-search-ii\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Backtracking, Matrix, String, Trie"
+    },
+    {
+        "topic_name":"Two Pointers",
+        "topic_question_questionname":"3Sum",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/3sum\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Sorting, Two Pointers"
+    },
+    {
+        "topic_name":"Two Pointers",
+        "topic_question_questionname":"Container With Most Water",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/container-with-most-water\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Greedy, Two Pointers"
+    },
+    {
+        "topic_name":"Two Pointers",
+        "topic_question_questionname":"Is Subsequence",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/is-subsequence\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Dynamic Programming, String, Two Pointers"
+    },
+    {
+        "topic_name":"Two Pointers",
+        "topic_question_questionname":"Two Sum II - Input Array Is Sorted",
+        "topic_question_difficulty":"Medium",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/two-sum-ii-input-array-is-sorted\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"Array, Binary Search, Two Pointers"
+    },
+    {
+        "topic_name":"Two Pointers",
+        "topic_question_questionname":"Valid Palindrome",
+        "topic_question_difficulty":"Easy",
+        "topic_question_page":"https:\/\/leetcode.com\/problems\/valid-palindrome\/description\/?envType=study-plan-v2&envId=top-interview-150",
+        "topic_question_selection1_subtopic":"String, Two Pointers"
+    }
+]
