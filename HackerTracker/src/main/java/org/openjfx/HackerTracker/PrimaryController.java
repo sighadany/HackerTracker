@@ -29,6 +29,11 @@ public class PrimaryController {
     }
     
     @FXML
+    private void switchToProgress() throws IOException {
+        App.setRoot("third");
+    }
+    
+    @FXML
     private void printHello(MouseEvent event) throws IOException {
     	System.out.println("Hello!");
     }

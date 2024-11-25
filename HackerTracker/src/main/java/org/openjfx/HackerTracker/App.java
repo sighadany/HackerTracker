@@ -19,7 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"));
+        scene = new Scene(loadFXML("third"));
 //    	scene = new Scene(loadFXML("resizing"));
         stage.setScene(scene);
         stage.setTitle("HackerTracker");
