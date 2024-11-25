@@ -1,3 +1,4 @@
+package org.openjfx.HackerTracker.problems;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,6 +20,46 @@ public class Problem extends AbstractProblem {
         this.timeOfLastAttempt = timeOfLastAttempt;
     }
 
+    public int getDifficultyRating() {
+        return difficultyRating;
+    }
+
+    public void setDifficultyRating(int difficultyRating) {
+        this.difficultyRating = difficultyRating;
+    }
+
+    public List<Integer> getTimeSpentOnQuestion() {
+        return timeSpentOnQuestion;
+    }
+
+    public void setTimeSpentOnQuestion(List<Integer> timeSpentOnQuestion) {
+        this.timeSpentOnQuestion = timeSpentOnQuestion;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getNumberOfCompletedAttempts() {
+        return numberOfCompletedAttempts;
+    }
+
+    public void setNumberOfCompletedAttempts(int numberOfCompletedAttempts) {
+        this.numberOfCompletedAttempts = numberOfCompletedAttempts;
+    }
+
+    public LocalDateTime getTimeOfLastAttempt() {
+        return timeOfLastAttempt;
+    }
+
+    public void setTimeOfLastAttempt(LocalDateTime timeOfLastAttempt) {
+        this.timeOfLastAttempt = timeOfLastAttempt;
+    }
+
     @Override
     public AttemptedProblem markCompleted(int problemId) {
         this.numberOfCompletedAttempts++;
@@ -26,6 +67,14 @@ public class Problem extends AbstractProblem {
         return new AttemptedProblem(problemId, timeOfLastAttempt);
     }
 
-    // Getters and Setters
-    // Override toString() if needed
+    @Override
+    public String toString() {
+        return "Problem{" +
+                "difficultyRating=" + difficultyRating +
+                ", timeSpentOnQuestion=" + timeSpentOnQuestion +
+                ", notes='" + notes + '\'' +
+                ", numberOfCompletedAttempts=" + numberOfCompletedAttempts +
+                ", timeOfLastAttempt=" + timeOfLastAttempt +
+                "} " + super.toString();
+    }
 }

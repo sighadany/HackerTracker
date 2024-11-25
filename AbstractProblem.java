@@ -1,4 +1,6 @@
+package org.openjfx.HackerTracker.problems;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class AbstractProblem {
     private int problemId;
@@ -19,8 +21,74 @@ public abstract class AbstractProblem {
         this.tag = tag;
     }
 
-    public abstract AttemptedProblem markCompleted(int problemId);
+    public int getProblemId() {
+        return problemId;
+    }
 
-    // Getters and Setters
-    // Override toString() if needed
+    public void setProblemId(int problemId) {
+        this.problemId = problemId;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
+    public String getQuestionTitle() {
+        return questionTitle;
+    }
+
+    public void setQuestionTitle(String questionTitle) {
+        this.questionTitle = questionTitle;
+    }
+
+    public String getTopicName() {
+        return topicName;
+    }
+
+    public void setTopicName(String topicName) {
+        this.topicName = topicName;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getDifficultyLevel() {
+        return difficultyLevel;
+    }
+
+    public void setDifficultyLevel(String difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public List<String> getTag() {
+        return tag;
+    }
+
+    public void setTag(List<String> tag) {
+        this.tag = tag;
+    }
+
+    @Override
+    public String toString() {
+        return "AbstractProblem{" +
+                "problemId=" + problemId +
+                ", priority=" + priority +
+                ", questionTitle='" + questionTitle + '\'' +
+                ", topicName='" + topicName + '\'' +
+                ", link='" + link + '\'' +
+                ", difficultyLevel='" + difficultyLevel + '\'' +
+                ", tag=" + tag +
+                '}';
+    }
+
+    public abstract AttemptedProblem markCompleted(int problemId);
 }

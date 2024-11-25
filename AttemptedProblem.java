@@ -9,6 +9,27 @@ public class AttemptedProblem {
         this.timeCompleted = timeCompleted;
     }
 
-    // Getters and Setters
-    // Override toString() if needed
+    public int getProblemId() {
+        return problemId;
+    }
+
+    public void setProblemId(int problemId) {
+        this.problemId = problemId;
+    }
+
+    public LocalDateTime getTimeCompleted() {
+        return timeCompleted;
+    }
+
+    public void setTimeCompleted(LocalDateTime timeCompleted) {
+        this.timeCompleted = timeCompleted;
+    }
+
+    @Override
+    public String toString() {
+        return "AttemptedProblem{" +
+                "problemId=" + problemId +
+                ", timeCompleted=" + timeCompleted +
+                '}';
+    }
 }
