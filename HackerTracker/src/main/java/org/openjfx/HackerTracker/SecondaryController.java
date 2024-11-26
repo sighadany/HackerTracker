@@ -4,13 +4,15 @@ import java.io.IOException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
+import java.util.HashMap;
+import java.util.Map;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.collections.FXCollections;
 
 import javafx.scene.input.MouseEvent;
@@ -22,7 +24,9 @@ public class SecondaryController {
 	
 	private VBox selectedDay;
 	private int questionIndex;
-    
+	private final Map<String, Integer> questionsPerDay = new HashMap<>();
+
+	
     @FXML
     private void printHello(MouseEvent event) throws IOException {
     	System.out.println("Hello!");
@@ -72,40 +76,74 @@ public class SecondaryController {
     	fullDate.setText(formattedDate);
     }
     
+    @FXML
+    private void handleDayClick(MouseEvent event) {
+        VBox clickedDay = (VBox) event.getSource(); // Identify the clicked day
+        selectedDay = clickedDay; // Set as the active day
+        System.out.println("Selected day: " + clickedDay.getId()); // Debugging
+        questionIndex = selectedDay.getChildren().size() + 1; // Update question index
+        loadQuestionsForSelectedDay();
+
+    }
+    
+    @FXML
+    private void handleTopicChange(ActionEvent event) {
+        String selectedTopic = difficultyChoiceBox.getValue();
+        System.out.println("Selected topic for " + selectedDay.getId() + ": " + selectedTopic);
+    }
+
+    
+    private void updateQuestionsForSelectedDay(int newCount) {
+        if (selectedDay == null) return;
+
+        int currentCount = selectedDay.getChildren().size();
+        questionsPerDay.put(selectedDay.getId(), newCount);
+
+
+        // Add or remove buttons dynamically
+        if (newCount > currentCount) {
+            for (int i = currentCount + 1; i <= newCount; i++) {
+                Button newButton = new Button("Q. " + i);
+                newButton.setWrapText(true);
+                selectedDay.getChildren().add(newButton);
+            }
+        } else if (newCount < currentCount) {
+            selectedDay.getChildren().remove(newCount, currentCount);
+        }
+    }
+    
+    private void loadQuestionsForSelectedDay() {
+        int count = questionsPerDay.getOrDefault(selectedDay.getId(), 0);
+        SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, count);
+        numberOfQuestions.setValueFactory(factory);
+    }
+
+
+
     
     public void setDayAndIndex(VBox day, int i) {
         this.selectedDay = day;
         this.questionIndex = i;
     }
     
+    @FXML
+    private Spinner<Integer> numberOfQuestions;
+    SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0);
+    
 
     @FXML
     public void initialize() {
     	setDate();
-    	
+    	numberOfQuestions.setValueFactory(svf);
         ObservableList<String> options = FXCollections.observableArrayList("Arrays", "Two Pointers", "Sliding Window", "Matrix", "Hashmap", "Intervals", "Stack", "Linked List", "Binary Tree General", "Binary Tree BFS","Binary Search Tree", "Graph General", "Backtracking", "Divide & Conquer", "Kadane's Algorithm", "Binary Search", "Heap", "Bit Manipulation", "Math", "1D DP", "Multidimensional DP");
         difficultyChoiceBox.setItems(options);
         
      // Define the range and step size
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
      
-        
-     // for now we manually enter the number of questions
-        
-        for(int i = 1; i <= 3; i++) {
-        	setDayAndIndex(Monday, i);
-        	addQuestion();
-        }
-        
-        for(int i = 1; i <= 6; i++) {
-        	setDayAndIndex(Wednesday, i);
-        	addQuestion();
-        }
-        
-        for(int i = 1; i <= 2; i++) {
-        	setDayAndIndex(Sunday, i);
-        	addQuestion();
-        }
+        numberOfQuestions.valueProperty().addListener((obs, oldValue, newValue) -> {
+            updateQuestionsForSelectedDay(newValue);
+        });
         
     }
     
