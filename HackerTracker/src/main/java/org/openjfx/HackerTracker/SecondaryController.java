@@ -85,14 +85,7 @@ public class SecondaryController {
         loadQuestionsForSelectedDay();
 
     }
-    
-    @FXML
-    private void handleTopicChange(ActionEvent event) {
-        String selectedTopic = difficultyChoiceBox.getValue();
-        System.out.println("Selected topic for " + selectedDay.getId() + ": " + selectedTopic);
-    }
 
-    
     private void updateQuestionsForSelectedDay(int newCount) {
         if (selectedDay == null) return;
 
