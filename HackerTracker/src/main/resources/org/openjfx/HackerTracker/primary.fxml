@@ -25,7 +25,7 @@
                   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mon" VBox.vgrow="ALWAYS" />
-                        <VBox prefHeight="235.0" prefWidth="43.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS" />
+                        <VBox prefHeight="235.0" prefWidth="43.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS" fx:id="mondayButtons" />
                      </children>
                   </VBox>
                   <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
