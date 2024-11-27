@@ -1,20 +1,23 @@
+package org.openjfx.HackerTracker;
+
 import java.time.LocalDateTime;
 
+import javafx.beans.property.SimpleIntegerProperty;
 public class AttemptedProblem {
-    private int problemId;
+    private SimpleIntegerProperty problemId;
     private LocalDateTime timeCompleted;
 
     public AttemptedProblem(int problemId, LocalDateTime timeCompleted) {
-        this.problemId = problemId;
+        this.problemId = new SimpleIntegerProperty(problemId);
         this.timeCompleted = timeCompleted;
     }
 
     public int getProblemId() {
-        return problemId;
+        return problemId.get();
     }
 
     public void setProblemId(int problemId) {
-        this.problemId = problemId;
+        this.problemId.set(problemId);
     }
 
     public LocalDateTime getTimeCompleted() {
@@ -28,7 +31,7 @@ public class AttemptedProblem {
     @Override
     public String toString() {
         return "AttemptedProblem{" +
-                "problemId=" + problemId +
+                "problemId=" + problemId.get() +
                 ", timeCompleted=" + timeCompleted +
                 '}';
     }
