@@ -84,6 +84,23 @@ public class SecondaryController {
         questionIndex = selectedDay.getChildren().size() + 1; // Update question index
         loadQuestionsForSelectedDay();
 
+        // Reset all days to default background color and borders
+        resetDayStyles();
+
+        // Highlight the selected day while retaining the border
+        clickedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 1;");
+
+    }
+    
+    private void resetDayStyles() {
+        String defaultStyle = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1;";
+        Monday.setStyle(defaultStyle);
+        Tuesday.setStyle(defaultStyle);
+        Wednesday.setStyle(defaultStyle);
+        Thursday.setStyle(defaultStyle);
+        Friday.setStyle(defaultStyle);
+        Saturday.setStyle(defaultStyle);
+        Sunday.setStyle(defaultStyle);
     }
 
     private void updateQuestionsForSelectedDay(int newCount) {
@@ -91,7 +108,6 @@ public class SecondaryController {
 
         int currentCount = selectedDay.getChildren().size();
         questionsPerDay.put(selectedDay.getId(), newCount);
-
 
         // Add or remove buttons dynamically
         if (newCount > currentCount) {
@@ -110,9 +126,6 @@ public class SecondaryController {
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, count);
         numberOfQuestions.setValueFactory(factory);
     }
-
-
-
     
     public void setDayAndIndex(VBox day, int i) {
         this.selectedDay = day;
@@ -123,7 +136,6 @@ public class SecondaryController {
     private Spinner<Integer> numberOfQuestions;
     SpinnerValueFactory<Integer> svf = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, 0);
     
-
     @FXML
     public void initialize() {
     	setDate();
@@ -139,10 +151,4 @@ public class SecondaryController {
         });
         
     }
-    
-    
-    
-    
-    
-    
 }

@@ -26,7 +26,7 @@
                   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mon" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Monday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Monday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -35,7 +35,7 @@
                   <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tue" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Tuesday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Tuesday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -44,7 +44,7 @@
                   <VBox alignment="CENTER" layoutX="53.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wed" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Wednesday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Wednesday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -53,7 +53,7 @@
                   <VBox alignment="CENTER" layoutX="96.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thu" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Thursday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Thursday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -62,7 +62,7 @@
                   <VBox alignment="CENTER" layoutX="182.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fri" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Friday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Friday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -71,7 +71,7 @@
                   <VBox alignment="CENTER" layoutX="225.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sat" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Saturday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Saturday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
@@ -80,7 +80,7 @@
                   <VBox alignment="CENTER" layoutX="268.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="20.0" HBox.hgrow="ALWAYS">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sun" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="Sunday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black;" VBox.vgrow="ALWAYS">
+                        <VBox fx:id="Sunday" alignment="TOP_CENTER" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-border-color: black; -fx-background-color: white;" VBox.vgrow="ALWAYS">
                         	<padding>
                               <Insets top="20.0" />
                            </padding></VBox>
