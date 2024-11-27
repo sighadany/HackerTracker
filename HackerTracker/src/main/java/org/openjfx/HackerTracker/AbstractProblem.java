@@ -2,7 +2,6 @@ package org.openjfx.HackerTracker;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import java.util.List;
 
 public abstract class AbstractProblem {
     private SimpleIntegerProperty problemId;
@@ -11,16 +10,16 @@ public abstract class AbstractProblem {
     private SimpleStringProperty topicName;
     private SimpleStringProperty link;
     private SimpleStringProperty difficultyLevel;
-    private List<String> tag;
+    private SimpleStringProperty tag;
 
-    public AbstractProblem(int problemId, int priority, String questionTitle, String topicName, String link, String difficultyLevel, List<String> tag) {
+    public AbstractProblem(int problemId, int priority, String questionTitle, String topicName, String link, String difficultyLevel, String tag) {
         this.problemId = new SimpleIntegerProperty(problemId);
         this.priority = new SimpleIntegerProperty(priority);
         this.questionTitle = new SimpleStringProperty(questionTitle);
         this.topicName = new SimpleStringProperty(topicName);
         this.link = new SimpleStringProperty(link);
         this.difficultyLevel = new SimpleStringProperty(difficultyLevel);
-        this.tag = tag;
+        this.tag = new SimpleStringProperty(tag);
     }
 
 
@@ -72,12 +71,12 @@ public abstract class AbstractProblem {
         this.difficultyLevel.set(difficultyLevel);
     }
 
-    public List<String> getTag() {
-        return tag;
+    public String getTag() {
+        return tag.get();
     }
 
-    public void setTag(List<String> tag) {
-        this.tag = tag;
+    public void setTag(String tag) {
+        this.tag.set(tag);;
     }
 
     @Override

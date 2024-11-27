@@ -3,21 +3,20 @@ package org.openjfx.HackerTracker;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Problem extends AbstractProblem {
     private SimpleIntegerProperty difficultyRating;
-    private List<Integer> timeSpentOnQuestion;
+    private SimpleIntegerProperty timeSpentOnQuestion;
     private SimpleStringProperty notes;
     private SimpleIntegerProperty numberOfCompletedAttempts;
     private LocalDateTime timeOfLastAttempt;
 
     public Problem(int problemId, int priority, String questionTitle, String topicName, String link, String difficultyLevel,
-                   List<String> tag, int difficultyRating, List<Integer> timeSpentOnQuestion, String notes,
+                   String tag, int difficultyRating, int timeSpentOnQuestion, String notes,
                    int numberOfCompletedAttempts, LocalDateTime timeOfLastAttempt) {
         super(problemId, priority, questionTitle, topicName, link, difficultyLevel, tag);
         this.difficultyRating = new SimpleIntegerProperty(difficultyRating);
-        this.timeSpentOnQuestion = timeSpentOnQuestion;
+        this.timeSpentOnQuestion = new SimpleIntegerProperty(timeSpentOnQuestion);
         this.notes = new SimpleStringProperty(notes);
         this.numberOfCompletedAttempts = new SimpleIntegerProperty(numberOfCompletedAttempts);
         this.timeOfLastAttempt = timeOfLastAttempt;
@@ -31,12 +30,12 @@ public class Problem extends AbstractProblem {
         this.difficultyRating.set(difficultyRating);
     }
 
-    public List<Integer> getTimeSpentOnQuestion() {
-        return timeSpentOnQuestion;
+    public int getTimeSpentOnQuestion() {
+        return timeSpentOnQuestion.get();
     }
 
-    public void setTimeSpentOnQuestion(List<Integer> timeSpentOnQuestion) {
-        this.timeSpentOnQuestion = timeSpentOnQuestion;
+    public void setTimeSpentOnQuestion(Integer timeSpentOnQuestion) {
+        this.timeSpentOnQuestion.set(timeSpentOnQuestion);
     }
 
     public String getNotes() {
