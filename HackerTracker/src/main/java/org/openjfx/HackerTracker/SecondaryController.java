@@ -69,6 +69,12 @@ public class SecondaryController {
     }
     
     @FXML
+    private void goToHomePage() throws IOException {
+        App.setRoot("primary");
+    }
+
+    
+    @FXML
     public void setDate() {
     	LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy");
@@ -80,7 +86,6 @@ public class SecondaryController {
     private void handleDayClick(MouseEvent event) {
         VBox clickedDay = (VBox) event.getSource(); // Identify the clicked day
         selectedDay = clickedDay; // Set as the active day
-        System.out.println("Selected day: " + clickedDay.getId()); // Debugging
         questionIndex = selectedDay.getChildren().size() + 1; // Update question index
         loadQuestionsForSelectedDay();
 
