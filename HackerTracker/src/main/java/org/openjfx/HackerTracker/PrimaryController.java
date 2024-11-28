@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 
 import javafx.scene.Node;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -89,9 +90,9 @@ public class PrimaryController {
         System.out.println("Testing");
     };
     
-    HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
-    static HashMap<String, int[]> problemSchedule;
-
+    public HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
+    public HashMap<String, List<Integer>> problemSchedule;
+    public HashMap<Integer, AttemptedProblem> attemptedProblem = new HashMap<Integer, AttemptedProblem>();
 
     @FXML
     public void initialize() {
@@ -104,7 +105,7 @@ public class PrimaryController {
         timeSpinner.setValueFactory(valueFactory);
         
         addProblemButtons();
-        loadProblems();
+        loadJsonProblems();
         problemSchedule = Scheduler.getSchedule();
     }
     
@@ -123,35 +124,30 @@ public class PrimaryController {
         	problemTile.setOnAction(new ShowProblemDetails());
             mondayButtons.getChildren().add(problemTile);
         }
-        
         for(int i=1; i<=numberOfTuesdayButtons; i++) {
         	Button problemTile = new Button("Q"+i);
         	problemTile.setUserData("Tue:"+i);
         	problemTile.setOnAction(new ShowProblemDetails());
             tuesdayButtons.getChildren().add(problemTile);
         }
-        
         for(int i=1; i<=numberOfWednesdayButtons; i++) {
         	Button problemTile = new Button("Q"+i);
         	problemTile.setUserData("Wed:"+i);
         	problemTile.setOnAction(new ShowProblemDetails());
             wednesdayButtons.getChildren().add(problemTile);
         }
-        
         for(int i=1; i<=numberOfThursdayButtons; i++) {
         	Button problemTile = new Button("Q"+i);
         	problemTile.setUserData("Thu:"+i);
         	problemTile.setOnAction(new ShowProblemDetails());
             thursdayButtons.getChildren().add(problemTile);
         }
-        
         for(int i=1; i<=numberOfFridayButtons; i++) {
         	Button problemTile = new Button("Q"+i);
         	problemTile.setUserData("Fri:"+i);
         	problemTile.setOnAction(new ShowProblemDetails());
             fridayButtons.getChildren().add(problemTile);
         }
-        
         for(int i=1; i<=numberOfSaturdayButtons; i++) {
         	Button problemTile = new Button("Q"+i);
         	problemTile.setUserData("Sat"+i);
@@ -167,7 +163,7 @@ public class PrimaryController {
         }
     }
     
-    private void loadProblems() {
+    private void loadJsonProblems() {
         try {
     		byte[] json = Files.readAllBytes(Paths.get("../cleaned_leetcode_questions.json"));
 
@@ -197,27 +193,27 @@ public class PrimaryController {
     	    String[] dayAndButton = btnId.split(":");
     	    String day = dayAndButton[0];
     	    int button = Integer.parseInt(dayAndButton[1]); 
-    	    Problem problem = problemMap.get(problemSchedule.get(day)[button-1]);
+    	    Problem problem = problemMap.get(problemSchedule.get(day).get(button-1));
     	        	    
     		// Set the details as per the corresponding object in map
     	    questionTitle.setText(problem.getQuestionTitle());
-    		if (problem.getNumberOfCompletedAttempts() > 0) questionCompleted.setSelected(true);
+    	    if (attemptedProblem.containsKey(problem.getProblemId())) questionCompleted.setSelected(true);
     		questionTopic.setText(problem.getTopicName());
     		questionDifficulty.setText(problem.getDifficultyLevel());
     	}
     }
     
     static class Scheduler {
-    	static HashMap<String, int[]> getSchedule() {
+    	static HashMap<String, List<Integer>> getSchedule() {
     		//Hardcoded for now
-    		HashMap<String, int[]> sch = new HashMap<>();
-    		sch.put("Mon", new int[]{41,42,43,44,45});
-    		sch.put("Tue", new int[]{});
-    		sch.put("Wed", new int[]{15,16});
-    		sch.put("Thu", new int[]{27});
-    		sch.put("Fri", new int[]{38,39});
-    		sch.put("Sat", new int[]{});
-    		sch.put("Sun", new int[]{50,51,52,53,54});
+    		HashMap<String, List<Integer>> sch = new HashMap<>();
+    		sch.put("Mon", List.of(41,42,43,44,45));
+    		sch.put("Tue", List.of());
+    		sch.put("Wed", List.of(15,16));
+    		sch.put("Thu", List.of(27));
+    		sch.put("Fri", List.of(38,39));
+    		sch.put("Sat", List.of());
+    		sch.put("Sun", List.of(50,51,52,53,54));
     		return sch;
     	}
     }
