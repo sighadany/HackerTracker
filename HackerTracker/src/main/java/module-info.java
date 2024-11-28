@@ -6,6 +6,7 @@ module org.openjfx.HackerTracker {
 	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
 	requires com.fasterxml.jackson.annotation;
+	requires java.base;
 
     opens org.openjfx.HackerTracker to javafx.fxml;
     exports org.openjfx.HackerTracker;
