@@ -166,18 +166,17 @@ public class PrimaryController {
     
     private void loadJsonProblems() {
         try {
-    		byte[] json = Files.readAllBytes(Paths.get("../cleaned_leetcode_questions.json"));
+    		byte[] json = Files.readAllBytes(Paths.get("../leetcode_problems.json"));
 
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode problems = mapper.readTree(json);
-            
-            int problemId = 1;
-            for (JsonNode p : problems) {
+            JsonNode jsonNode = mapper.readTree(json);
+                        
+            for (JsonNode p : jsonNode.get("problems")) {
+            	int problemId = p.get("Problem_id").asInt();
             	Problem problem = new Problem(problemId, 0 , p.get("topic_question_questionname").asText(), p.get("topic_name").asText(), 
             			p.get("topic_question_page").asText(), p.get("topic_question_difficulty").asText(),
-            			p.get("topic_question_selection1_subtopic").asText(), 0, 0, "", false, null );
+            			p.get("subtopic").asText(), 0, 0, "", false, null );
             	problemMap.put(problemId, problem);
-            	problemId++;
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
