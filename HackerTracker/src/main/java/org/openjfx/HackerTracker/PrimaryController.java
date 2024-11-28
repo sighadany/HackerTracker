@@ -216,10 +216,4 @@ public class PrimaryController {
     		return sch;
     	}
     }
-    
-    
-    
-    
-    
-    
 }
