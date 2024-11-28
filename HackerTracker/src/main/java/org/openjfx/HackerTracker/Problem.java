@@ -8,17 +8,17 @@ public class Problem extends AbstractProblem {
     private SimpleIntegerProperty difficultyRating;
     private SimpleIntegerProperty timeSpentOnQuestion;
     private SimpleStringProperty notes;
-    private SimpleIntegerProperty numberOfCompletedAttempts;
+    private boolean isCompleted;
     private LocalDateTime timeOfLastAttempt;
 
     public Problem(int problemId, int priority, String questionTitle, String topicName, String link, String difficultyLevel,
                    String tag, int difficultyRating, int timeSpentOnQuestion, String notes,
-                   int numberOfCompletedAttempts, LocalDateTime timeOfLastAttempt) {
+                   boolean isCompleted, LocalDateTime timeOfLastAttempt) {
         super(problemId, priority, questionTitle, topicName, link, difficultyLevel, tag);
         this.difficultyRating = new SimpleIntegerProperty(difficultyRating);
         this.timeSpentOnQuestion = new SimpleIntegerProperty(timeSpentOnQuestion);
         this.notes = new SimpleStringProperty(notes);
-        this.numberOfCompletedAttempts = new SimpleIntegerProperty(numberOfCompletedAttempts);
+        this.isCompleted = isCompleted;
         this.timeOfLastAttempt = timeOfLastAttempt;
     }
     
@@ -46,12 +46,12 @@ public class Problem extends AbstractProblem {
         this.notes.set(notes);
     }
 
-    public int getNumberOfCompletedAttempts() {
-        return numberOfCompletedAttempts.get();
+    public boolean getIsCompleted() {
+        return isCompleted;
     }
 
-    public void setNumberOfCompletedAttempts(int numberOfCompletedAttempts) {
-        this.numberOfCompletedAttempts.set(numberOfCompletedAttempts);
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 
     public LocalDateTime getTimeOfLastAttempt() {
@@ -68,15 +68,8 @@ public class Problem extends AbstractProblem {
                 "difficultyRating=" + difficultyRating.get() +
                 ", timeSpentOnQuestion=" + timeSpentOnQuestion +
                 ", notes='" + notes.get() + '\'' +
-                ", numberOfCompletedAttempts=" + numberOfCompletedAttempts.get() +
+                ", isCompleted=" + isCompleted +
                 ", timeOfLastAttempt=" + timeOfLastAttempt +
                 "} " + super.toString();
-    }
-
-    @Override
-    public AttemptedProblem markCompleted(int problemId) {
-    	numberOfCompletedAttempts.set(numberOfCompletedAttempts.get()+1);
-        this.timeOfLastAttempt = LocalDateTime.now();
-        return new AttemptedProblem(problemId, timeOfLastAttempt);
     }
 }

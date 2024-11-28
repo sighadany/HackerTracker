@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -30,12 +31,10 @@ import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 
 public class PrimaryController {
-	
 	private VBox selectedDay;
 	private int questionIndex;
     public HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
     public HashMap<String, List<Integer>> problemSchedule;
-    public HashMap<Integer, AttemptedProblem> attemptedProblem = new HashMap<Integer, AttemptedProblem>();
 
     @FXML
     private void switchToSettings() throws IOException {
@@ -93,6 +92,9 @@ public class PrimaryController {
     
     @FXML
     private Label questionDifficulty;
+    
+    @FXML
+    private Hyperlink hyperLink;
     
     @FXML
     public void addQuestion(String day) {
@@ -173,7 +175,7 @@ public class PrimaryController {
             for (JsonNode p : problems) {
             	Problem problem = new Problem(problemId, 0 , p.get("topic_question_questionname").asText(), p.get("topic_name").asText(), 
             			p.get("topic_question_page").asText(), p.get("topic_question_difficulty").asText(),
-            			p.get("topic_question_selection1_subtopic").asText(), 0, 0, "", 0, null );
+            			p.get("topic_question_selection1_subtopic").asText(), 0, 0, "", false, null );
             	problemMap.put(problemId, problem);
             	problemId++;
             }
@@ -196,9 +198,10 @@ public class PrimaryController {
     	        	    
     		// Set the details as per the corresponding object in map
     	    questionTitle.setText(problem.getQuestionTitle());
-    	    if (attemptedProblem.containsKey(problem.getProblemId())) questionCompleted.setSelected(true);
+    	    if (problem.getIsCompleted()) questionCompleted.setSelected(true);
     		questionTopic.setText(problem.getTopicName());
     		questionDifficulty.setText(problem.getDifficultyLevel());
+    		hyperLink.setText(problem.getLink());
     	}
     }
     

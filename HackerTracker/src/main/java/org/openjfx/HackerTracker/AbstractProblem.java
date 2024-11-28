@@ -91,6 +91,4 @@ public abstract class AbstractProblem {
                 ", tag=" + tag +
                 '}';
     }
-
-    public abstract AttemptedProblem markCompleted(int problemId);
 }
