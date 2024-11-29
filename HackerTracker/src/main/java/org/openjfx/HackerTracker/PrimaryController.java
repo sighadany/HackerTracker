@@ -116,10 +116,6 @@ public class PrimaryController {
     	setDate();
     	loadQuestionsFromSharedData();
     	
-        ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-        difficultyChoiceBox.setItems(options);
-        
-        
         hyperLink.setOnAction(event -> {
             try {
                 // Get the URL from the Hyperlink text
@@ -133,7 +129,10 @@ public class PrimaryController {
                 e.printStackTrace();
             }
         });
-        
+    	
+    	
+        ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
+        difficultyChoiceBox.setItems(options);
         
      // Define the range and step size
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
