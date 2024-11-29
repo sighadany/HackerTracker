@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javafx.scene.control.Button;
@@ -25,7 +26,7 @@ public class SecondaryController {
 	private VBox selectedDay;
 	private int questionIndex;
 	private final Map<String, Integer> questionsPerDay = new HashMap<>();
-
+	private final SharedData sharedData = SharedData.getInstance();
 	
     @FXML
     private void printHello(MouseEvent event) throws IOException {
@@ -73,6 +74,12 @@ public class SecondaryController {
         App.setRoot("primary");
     }
 
+    // Call this when switching *back* to the settings view
+    public void refreshSettingsView() {
+        refreshDayViews(); // Refresh the UI with the shared state
+    }
+
+
     
     @FXML
     public void setDate() {
@@ -107,18 +114,18 @@ public class SecondaryController {
         Saturday.setStyle(defaultStyle);
         Sunday.setStyle(defaultStyle);
     }
-
+    
     private void updateQuestionsForSelectedDay(int newCount) {
         if (selectedDay == null) return;
 
+        String dayId = selectedDay.getId();
         int currentCount = selectedDay.getChildren().size();
-        questionsPerDay.put(selectedDay.getId(), newCount);
 
-        // Add or remove buttons dynamically
+        sharedData.getQuestionsPerDay().put(dayId, newCount);
+
         if (newCount > currentCount) {
             for (int i = currentCount + 1; i <= newCount; i++) {
                 Button newButton = new Button("Q. " + i);
-                newButton.setWrapText(true);
                 selectedDay.getChildren().add(newButton);
             }
         } else if (newCount < currentCount) {
@@ -127,7 +134,11 @@ public class SecondaryController {
     }
     
     private void loadQuestionsForSelectedDay() {
-        int count = questionsPerDay.getOrDefault(selectedDay.getId(), 0);
+        if (selectedDay == null) return;
+
+        String dayId = selectedDay.getId();
+        int count = sharedData.getQuestionsPerDay().getOrDefault(dayId, 0);
+
         SpinnerValueFactory<Integer> factory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10, count);
         numberOfQuestions.setValueFactory(factory);
     }
@@ -143,17 +154,46 @@ public class SecondaryController {
     
     @FXML
     public void initialize() {
-    	setDate();
-    	numberOfQuestions.setValueFactory(svf);
-        ObservableList<String> options = FXCollections.observableArrayList("Arrays", "Two Pointers", "Sliding Window", "Matrix", "Hashmap", "Intervals", "Stack", "Linked List", "Binary Tree General", "Binary Tree BFS","Binary Search Tree", "Graph General", "Backtracking", "Divide & Conquer", "Kadane's Algorithm", "Binary Search", "Heap", "Bit Manipulation", "Math", "1D DP", "Multidimensional DP");
+        setDate();
+        numberOfQuestions.setValueFactory(svf);
+
+        // Populate dropdown
+        ObservableList<String> options = FXCollections.observableArrayList(
+            "Arrays", "Two Pointers", "Sliding Window", "Matrix", "Hashmap", 
+            "Intervals", "Stack", "Linked List", "Binary Tree General", "Binary Tree BFS",
+            "Binary Search Tree", "Graph General", "Backtracking", "Divide & Conquer", 
+            "Kadane's Algorithm", "Binary Search", "Heap", "Bit Manipulation", "Math", 
+            "1D DP", "Multidimensional DP"
+        );
         difficultyChoiceBox.setItems(options);
-        
-     // Define the range and step size
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
-     
+
+        // Populate all days' UI based on the shared state
+        refreshDayViews();
+
+        // Add listener to the Spinner for real-time updates
         numberOfQuestions.valueProperty().addListener((obs, oldValue, newValue) -> {
-            updateQuestionsForSelectedDay(newValue);
+            if (selectedDay != null) {
+                String dayId = selectedDay.getId();
+                questionsPerDay.put(dayId, newValue); // Update shared state
+                updateQuestionsForSelectedDay(newValue); // Update UI dynamically
+            }
         });
-        
     }
+    
+    private void refreshDayViews() {
+        for (VBox day : List.of(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)) {
+            String dayId = day.getId();
+            int questionCount = questionsPerDay.getOrDefault(dayId, 0);
+
+            day.getChildren().clear(); // Clear current buttons
+
+            for (int i = 1; i <= questionCount; i++) {
+                Button newButton = new Button("Q. " + i);
+                newButton.setWrapText(true);
+                day.getChildren().add(newButton);
+            }
+        }
+    }
+
+
 }
