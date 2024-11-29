@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,6 +36,7 @@ public class PrimaryController {
 	private int questionIndex;
     public HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
     public HashMap<String, List<Integer>> problemSchedule;
+    private final SharedData sharedData = SharedData.getInstance();
 
     @FXML
     private void switchToSettings() throws IOException {
@@ -125,6 +127,7 @@ public class PrimaryController {
     @FXML
     public void initialize() {
     	setDate();
+    	loadQuestionsFromSharedData();
     	
         ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         difficultyChoiceBox.setItems(options);
@@ -134,34 +137,29 @@ public class PrimaryController {
         timeSpinner.setValueFactory(valueFactory);
      
         
-     // for now we manually enter the number of questions
-        for(int i = 1; i <= 5; i++) {
-        	setDayAndIndex(Monday, i);
-        	addQuestion("Mon:");
-        }
-        
-        for(int i = 1; i <= 2; i++) {
-        	setDayAndIndex(Wednesday, i);
-        	addQuestion("Wed:");
-        }
-        
-        for(int i = 1; i <= 1; i++) {
-        	setDayAndIndex(Thursday, i);
-        	addQuestion("Thu:");
-        }
-        
-        for(int i = 1; i <= 2; i++) {
-        	setDayAndIndex(Friday, i);
-        	addQuestion("Fri:");
-        }
-        
-        for(int i = 1; i <= 5; i++) {
-        	setDayAndIndex(Sunday, i);
-        	addQuestion("Sun:");
-        }
-        
         loadJsonProblems();
         problemSchedule = Scheduler.getSchedule();
+    }
+    
+    private void loadQuestionsFromSharedData() {
+        Map<String, Integer> questionsPerDay = sharedData.getQuestionsPerDay();
+
+        updateDayUI(Monday, questionsPerDay.getOrDefault("Monday", 0));
+        updateDayUI(Tuesday, questionsPerDay.getOrDefault("Tuesday", 0));
+        updateDayUI(Wednesday, questionsPerDay.getOrDefault("Wednesday", 0));
+        updateDayUI(Thursday, questionsPerDay.getOrDefault("Thursday", 0));
+        updateDayUI(Friday, questionsPerDay.getOrDefault("Friday", 0));
+        updateDayUI(Saturday, questionsPerDay.getOrDefault("Saturday", 0));
+        updateDayUI(Sunday, questionsPerDay.getOrDefault("Sunday", 0));
+    }
+    
+    private void updateDayUI(VBox dayBox, int questionCount) {
+        dayBox.getChildren().clear(); // Clear existing buttons
+        for (int i = 1; i <= questionCount; i++) {
+            Button questionButton = new Button("Q. " + i);
+            questionButton.setWrapText(true);
+            dayBox.getChildren().add(questionButton);
+        }
     }
     
     private void loadJsonProblems() {
