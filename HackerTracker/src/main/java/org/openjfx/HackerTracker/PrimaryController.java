@@ -144,20 +144,22 @@ public class PrimaryController {
     private void loadQuestionsFromSharedData() {
         Map<String, Integer> questionsPerDay = sharedData.getQuestionsPerDay();
 
-        updateDayUI(Monday, questionsPerDay.getOrDefault("Monday", 0));
-        updateDayUI(Tuesday, questionsPerDay.getOrDefault("Tuesday", 0));
-        updateDayUI(Wednesday, questionsPerDay.getOrDefault("Wednesday", 0));
-        updateDayUI(Thursday, questionsPerDay.getOrDefault("Thursday", 0));
-        updateDayUI(Friday, questionsPerDay.getOrDefault("Friday", 0));
-        updateDayUI(Saturday, questionsPerDay.getOrDefault("Saturday", 0));
-        updateDayUI(Sunday, questionsPerDay.getOrDefault("Sunday", 0));
+        updateDayUI(Monday, questionsPerDay.getOrDefault("Monday", 0), "Mon:");
+        updateDayUI(Tuesday, questionsPerDay.getOrDefault("Tuesday", 0), "Tue:");
+        updateDayUI(Wednesday, questionsPerDay.getOrDefault("Wednesday", 0), "Wed:");
+        updateDayUI(Thursday, questionsPerDay.getOrDefault("Thursday", 0), "Thu:");
+        updateDayUI(Friday, questionsPerDay.getOrDefault("Friday", 0), "Fri:");
+        updateDayUI(Saturday, questionsPerDay.getOrDefault("Saturday", 0), "Sat:");
+        updateDayUI(Sunday, questionsPerDay.getOrDefault("Sunday", 0), "Sun:");
     }
     
-    private void updateDayUI(VBox dayBox, int questionCount) {
+    private void updateDayUI(VBox dayBox, int questionCount, String day) {
         dayBox.getChildren().clear(); // Clear existing buttons
         for (int i = 1; i <= questionCount; i++) {
             Button questionButton = new Button("Q. " + i);
             questionButton.setWrapText(true);
+            questionButton.setUserData(day+i);
+            questionButton.setOnAction(new ShowProblemDetails());
             dayBox.getChildren().add(questionButton);
         }
     }
