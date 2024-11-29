@@ -99,17 +99,6 @@ public class PrimaryController {
     private Hyperlink hyperLink;
     
     @FXML
-    public void addQuestion(String day) {
-        if (selectedDay != null) {
-            Button newButton = new Button("Q. " + questionIndex);
-        	newButton.setUserData(day+questionIndex);
-        	newButton.setOnAction(new ShowProblemDetails());
-            newButton.setWrapText(true);
-            selectedDay.getChildren().add(newButton);
-        }
-    }
-    
-    @FXML
     public void setDate() {
     	LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy");
