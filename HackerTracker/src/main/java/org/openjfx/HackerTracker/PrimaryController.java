@@ -1,6 +1,8 @@
 package org.openjfx.HackerTracker;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -113,6 +115,21 @@ public class PrimaryController {
     public void initialize() {
     	setDate();
     	loadQuestionsFromSharedData();
+    	
+        hyperLink.setOnAction(event -> {
+            try {
+                // Get the URL from the Hyperlink text
+                String url = hyperLink.getText();
+                if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                    url = "https://" + url; // Add protocol if missing
+                }
+                // Open the URL in the default web browser
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    	
     	
         ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         difficultyChoiceBox.setItems(options);
