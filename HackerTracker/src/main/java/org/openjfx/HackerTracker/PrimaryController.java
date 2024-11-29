@@ -20,6 +20,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -35,6 +36,8 @@ public class PrimaryController {
 	private int questionIndex;
     public HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
     public HashMap<String, List<Integer>> problemSchedule;
+    private Problem selectedProblem;
+
 
     @FXML
     private void switchToSettings() throws IOException {
@@ -97,6 +100,10 @@ public class PrimaryController {
     private Hyperlink hyperLink;
     
     @FXML
+    private TextArea userNotes; // Notes field
+
+    
+    @FXML
     public void addQuestion(String day) {
         if (selectedDay != null) {
             Button newButton = new Button("Q. " + questionIndex);
@@ -107,6 +114,7 @@ public class PrimaryController {
         }
     }
     
+   
     @FXML
     public void setDate() {
     	LocalDate currentDate = LocalDate.now();
@@ -132,6 +140,9 @@ public class PrimaryController {
      // Define the range and step size
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
         timeSpinner.setValueFactory(valueFactory);
+        
+        addListenersToFields();
+
      
         
      // for now we manually enter the number of questions
@@ -164,6 +175,68 @@ public class PrimaryController {
         problemSchedule = Scheduler.getSchedule();
     }
     
+    
+    class ShowProblemDetails implements EventHandler<ActionEvent> {
+        @Override
+        public void handle(ActionEvent event) {
+            Node node = (Node) event.getSource();
+            String btnId = (String) node.getUserData();
+
+            String[] dayAndButton = btnId.split(":");
+            String day = dayAndButton[0];
+            int buttonIndex = Integer.parseInt(dayAndButton[1]);
+
+            // Retrieve the corresponding problem
+            selectedProblem = problemMap.get(problemSchedule.get(day).get(buttonIndex - 1));
+
+            if (selectedProblem != null) {
+                // Populate fields with problem data
+                questionTitle.setText(selectedProblem.getQuestionTitle());
+                questionTopic.setText(selectedProblem.getTopicName());
+                questionDifficulty.setText(selectedProblem.getDifficultyLevel());
+                hyperLink.setText(selectedProblem.getLink());
+                questionCompleted.setSelected(selectedProblem.getIsCompleted());
+                difficultyChoiceBox.getSelectionModel().select(String.valueOf(selectedProblem.getDifficultyRating()));
+                timeSpinner.getValueFactory().setValue(selectedProblem.getTimeSpentOnQuestion());
+                userNotes.setText(selectedProblem.getNotes());
+            }
+        }
+    }
+
+    
+    
+
+    private void addListenersToFields() {
+        // Update difficulty rating when changed
+        difficultyChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null && newValue != null) {
+                selectedProblem.setDifficultyRating(Integer.parseInt(newValue));
+            }
+        });
+
+        // Update time spent when the spinner value changes
+        timeSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setTimeSpentOnQuestion(newValue);
+            }
+        });
+
+        // Update completion status
+        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setIsCompleted(newValue);
+            }
+        });
+
+        // Update notes field
+        userNotes.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setNotes(newValue);
+            }
+        });
+    }
+
+	    
     private void loadJsonProblems() {
         try {
     		byte[] json = Files.readAllBytes(Paths.get("../leetcode_problems.json"));
@@ -183,26 +256,7 @@ public class PrimaryController {
         }
     }
     
-    class ShowProblemDetails implements EventHandler<ActionEvent>{
-    	@Override
-    	public void handle(ActionEvent event) {
-    	    Node node = (Node) event.getSource();
-    	    String btnId = (String) node.getUserData();
-    	    
-    	    // Determine the button pressed and find the corresponding day and problem
-    	    String[] dayAndButton = btnId.split(":");
-    	    String day = dayAndButton[0];
-    	    int button = Integer.parseInt(dayAndButton[1]); 
-    	    Problem problem = problemMap.get(problemSchedule.get(day).get(button-1));
-    	        	    
-    		// Set the details as per the corresponding object in map
-    	    questionTitle.setText(problem.getQuestionTitle());
-    	    if (problem.getIsCompleted()) questionCompleted.setSelected(true);
-    		questionTopic.setText(problem.getTopicName());
-    		questionDifficulty.setText(problem.getDifficultyLevel());
-    		hyperLink.setText(problem.getLink());
-    	}
-    }
+
     
     static class Scheduler {
     	static HashMap<String, List<Integer>> getSchedule() {
