@@ -1,6 +1,8 @@
 package org.openjfx.HackerTracker;
 
 import java.io.IOException;
+import java.net.URI;
+import java.awt.Desktop;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -22,6 +24,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -47,6 +50,7 @@ public class PrimaryController {
     public HashMap<Integer, Problem> problemMap = new HashMap<Integer, Problem>();
     public HashMap<String, List<Integer>> problemSchedule;
     private final Scheduler SHARED_DATA = Scheduler.getInstance();
+    private Problem selectedProblem;
     
     /**
      * Switches from the main view to the settings view
@@ -114,6 +118,9 @@ public class PrimaryController {
     @FXML
     private Hyperlink hyperLink;
     
+    @FXML
+    private TextArea userNotes; // Notes field
+    
     /**
      * Sets the current date on the right side of the view
      */
@@ -150,9 +157,26 @@ public class PrimaryController {
         ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         difficultyChoiceBox.setItems(options);
         
+        
+        hyperLink.setOnAction(event -> {
+            try {
+                // Get the URL from the Hyperlink text
+                String url = hyperLink.getText();
+                if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                    url = "https://" + url; // Add protocol if missing
+                }
+                // Open the URL in the default web browser
+                Desktop.getDesktop().browse(new URI(url));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        
      // Define the range and step size
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
         timeSpinner.setValueFactory(valueFactory);
+        
+        addListenersToFields();
     }
     
     /**
@@ -189,6 +213,34 @@ public class PrimaryController {
             dayBox.getChildren().add(questionButton);
         }
     }
+    
+    private void addListenersToFields() {
+        // Update difficulty rating when changed
+        difficultyChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null && newValue != null) {
+                selectedProblem.setDifficultyRating(Integer.parseInt(newValue));
+            }
+        });
+        // Update time spent when the spinner value changes
+        timeSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setTimeSpentOnQuestion(newValue);
+            }
+        });
+        // Update completion status
+        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setIsCompleted(newValue);
+            }
+        });
+        // Update notes field
+        userNotes.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setNotes(newValue);
+            }
+        });
+    }
+    
     
     /**
      * Reads and stores leetcode problems and schedule from the json file
@@ -253,7 +305,7 @@ public class PrimaryController {
      * Displays question details on the right side of the main view upon selecting a question
      * 
      * @see Problem
-     * @author Dany Sigha, Sarthak Mallick
+     * @author Sarthak Mallick
      * @version 1.0
      */
     class ShowProblemDetails implements EventHandler<ActionEvent>{
@@ -266,14 +318,29 @@ public class PrimaryController {
     	    String[] dayAndButton = btnId.split(":");
     	    String day = dayAndButton[0];
     	    int button = Integer.parseInt(dayAndButton[1]);
-    	    Problem problem = problemMap.get(problemSchedule.get(day).get(button-1));
+    	    selectedProblem = problemMap.get(problemSchedule.get(day).get(button-1));
+//    	    Problem problem = problemMap.get(problemSchedule.get(day).get(button-1));
     	        	    
     		// Set the details as per the corresponding object in map
-    	    questionTitle.setText(problem.getQuestionTitle());
-    	    if (problem.getIsCompleted()) questionCompleted.setSelected(true);
-    		questionTopic.setText(problem.getTopicName());
-    		questionDifficulty.setText(problem.getDifficultyLevel());
-    		hyperLink.setText(problem.getLink());
+    	    if(selectedProblem != null) {
+    	    	questionTitle.setText(selectedProblem.getQuestionTitle());
+        	    if (selectedProblem.getIsCompleted()) questionCompleted.setSelected(true);
+        		questionTopic.setText(selectedProblem.getTopicName());
+        		questionDifficulty.setText(selectedProblem.getDifficultyLevel());
+        		hyperLink.setText(selectedProblem.getLink());
+        		questionTitle.setText(selectedProblem.getQuestionTitle());
+                questionTopic.setText(selectedProblem.getTopicName());
+                questionDifficulty.setText(selectedProblem.getDifficultyLevel());
+                hyperLink.setText(selectedProblem.getLink());
+                questionCompleted.setSelected(selectedProblem.getIsCompleted());
+                difficultyChoiceBox.getSelectionModel().select(String.valueOf(selectedProblem.getDifficultyRating()));
+                timeSpinner.getValueFactory().setValue(selectedProblem.getTimeSpentOnQuestion());
+                userNotes.setText(selectedProblem.getNotes());
+        		
+    	    }
+    	    
+    		
+    		
     	}
     }
 

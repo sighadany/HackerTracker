@@ -21,6 +21,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
 
+/**
+ * Dynamically updates the appearance of the settings view. Updates the calendar
+ * with leetcode questions based on a schedule defined by the user.
+ * 
+ * Provides a spinner to let the user define how many questions to schedule on one
+ * day
+ * 
+ * @author Kavin Jha, Dany Sigha
+ * @version 1.0
+ */
 public class SecondaryController {
 	
 	private VBox selectedDay;
@@ -142,7 +152,7 @@ public class SecondaryController {
     
     /**
      * Upon updating the spinner value (the number of questions) on the right 
-     * the function adds / removes and schedules / unschedules questions
+     * the function adds / removes and schedules / marks unscheduled questions
      * 
      * @param newCount the new number of question for the selected day
      * @see Scheduler#scheduleNextProblem
@@ -174,7 +184,7 @@ public class SecondaryController {
         } else if (newCount < currentCount) {
         	
         	for (int i = newCount; i < currentCount; i++) {
-        		SHARED_DATA.unScheduleProblem(dayId);
+        		SHARED_DATA.unScheduledProblem(dayId);
         	}
         	
             selectedDay.getChildren().remove(newCount, currentCount);
