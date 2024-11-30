@@ -87,14 +87,10 @@ public class Scheduler {
      * @see Problem#setIsScheduled
      */
     public void unScheduledProblem(String day) {
-    	
     	int numberOfQuestions = this.questionsPerDay.get(day).size();
-    	
     	if ( numberOfQuestions > 0 ) {
     		Integer lastPorblemId = this.questionsPerDay.get(day).remove(numberOfQuestions - 1);
-        	
         	Problem lastProblem = this.problemMapping.get(lastPorblemId);
-        	
         	lastProblem.setIsScheduled(false);
     	}
     }

@@ -147,7 +147,7 @@ public class PrimaryController {
     	setDate();
     	
     	if (SHARED_DATA.getProblemMapping().size() == 0) {
-    		loadJsonProblems(); // get the problems and the schedule from the json file
+    		loadJsonProblemsAndSchedule(); // get the problems and the schedule from the json file
     	}else {
     		problemSchedule = SHARED_DATA.getQuestionsPerDay(); 
     		// for now this is an error, but the assigning problems logic should be in the settings page
@@ -187,7 +187,6 @@ public class PrimaryController {
      * @see Scheduler
      */
     private void addQuestionsToCalendar() {
-
         updateDayUI(Monday, "Mon", problemSchedule.get("Mon").size());
         updateDayUI(Tuesday, "Tue", problemSchedule.get("Tue").size());
         updateDayUI(Wednesday, "Wed", problemSchedule.get("Wed").size());
@@ -209,10 +208,8 @@ public class PrimaryController {
         dayBox.getChildren().clear(); // Clear existing buttons
         for (int i = 1; i <= questionCount; i++) {
             Button questionButton = new Button("Q. " + i);
-            questionButton.setUserData( day + ":" + i);
-            questionButton.setOnAction(new ShowProblemDetails());
             questionButton.setWrapText(true);
-            questionButton.setUserData(day+i);
+            questionButton.setUserData(day+":"+i);
             questionButton.setOnAction(new ShowProblemDetails());
             dayBox.getChildren().add(questionButton);
         }
@@ -254,7 +251,7 @@ public class PrimaryController {
      * @see Scheduler
      * @see Scheduler
      */
-    private void loadJsonProblems() {
+    private void loadJsonProblemsAndSchedule() {
         try {
     		byte[] json = Files.readAllBytes(Paths.get("../leetcode_problems.json"));
 
@@ -263,28 +260,20 @@ public class PrimaryController {
             
             
             problemSchedule = SHARED_DATA.getQuestionsPerDay();
-            
             JsonNode storedSchedule = jsonNode.get("schedule");
             
          // get the schedule from the json file
-            
             for(String day : new String[] {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}) {
             	JsonNode dayNode = storedSchedule.get(day);
-            	
             	String[] questionIds = (dayNode != null && dayNode.isArray() && dayNode.size() > 0) 
                         ? dayNode.toString().replace("[", "").replace("]", "").trim().split(",")
                         : new String[0]; // Return an empty array if it's an empty list or non-existent
-            	
-            	List<Integer> integerList = Arrays.stream(questionIds).map(s -> Integer.parseInt(s) ).collect(Collectors.toList());
-            	
-//            	System.out.println(integerList);
-            	
+            	List<Integer> integerList = Arrays.stream(questionIds).map(s -> Integer.parseInt(s) ).collect(Collectors.toList());            	
             	problemSchedule.put(day, integerList);
             		            	
             }
             
          // get the leetcode questions from the json file
-            
             for (JsonNode p : jsonNode.get("problems")) {
             	int problemId = p.get("Problem_id").asInt();
             	Problem problem = new Problem(problemId, 0 , p.get("topic_question_questionname").asText(), p.get("topic_name").asText(), 
@@ -294,10 +283,8 @@ public class PrimaryController {
             }
             
             // store the schedule and the questions in an object
-            
             SHARED_DATA.setQuestionsPerDay(problemSchedule);
-            
-            SHARED_DATA.setProblemMapping(problemMap); // set the dynamic problem map data
+            SHARED_DATA.setProblemMapping(problemMap);
             
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -323,16 +310,10 @@ public class PrimaryController {
     	    String day = dayAndButton[0];
     	    int button = Integer.parseInt(dayAndButton[1]);
     	    selectedProblem = problemMap.get(problemSchedule.get(day).get(button-1));
-//    	    Problem problem = problemMap.get(problemSchedule.get(day).get(button-1));
     	        	    
     		// Set the details as per the corresponding object in map
     	    if(selectedProblem != null) {
-    	    	questionTitle.setText(selectedProblem.getQuestionTitle());
-        	    if (selectedProblem.getIsCompleted()) questionCompleted.setSelected(true);
-        		questionTopic.setText(selectedProblem.getTopicName());
-        		questionDifficulty.setText(selectedProblem.getDifficultyLevel());
-        		hyperLink.setText(selectedProblem.getLink());
-        		questionTitle.setText(selectedProblem.getQuestionTitle());
+                questionTitle.setText(selectedProblem.getQuestionTitle());
                 questionTopic.setText(selectedProblem.getTopicName());
                 questionDifficulty.setText(selectedProblem.getDifficultyLevel());
                 hyperLink.setText(selectedProblem.getLink());
@@ -340,11 +321,7 @@ public class PrimaryController {
                 difficultyChoiceBox.getSelectionModel().select(String.valueOf(selectedProblem.getDifficultyRating()));
                 timeSpinner.getValueFactory().setValue(selectedProblem.getTimeSpentOnQuestion());
                 userNotes.setText(selectedProblem.getNotes());
-        		
     	    }
-    	    
-    		
-    		
     	}
     }
 
