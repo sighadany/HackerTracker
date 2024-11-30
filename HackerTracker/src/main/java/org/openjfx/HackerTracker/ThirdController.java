@@ -16,6 +16,8 @@ import javafx.scene.text.Text;
 
 public class ThirdController {
 	
+	private final Scheduler SHARED_DATA = Scheduler.getInstance();
+	
 	@FXML
 	private Label easyTag;
 	
@@ -50,7 +52,7 @@ public class ThirdController {
     private final double START_ANGLE = 180;
     
     //this is dummy data that must be replaced by number of completed questions across all topics 
-    private double numberOfQuestionsCompleted = 27;
+    private double numberOfQuestionsCompleted = 84;
     
     //intially we consider all 150 questions
     private double numberOfQuestions = 150;
@@ -122,7 +124,7 @@ public class ThirdController {
     			numberOfQuestionsCompleted = 6;
     			numberOfQuestions = 7;
     			break;
-    		case "Array String":
+    		case "Array / String":
     			newTitle = "Array String";
     			numberOfQuestionsCompleted = 1;
     			numberOfQuestions = 6;
@@ -157,7 +159,7 @@ public class ThirdController {
     			numberOfQuestionsCompleted = 8;
     			numberOfQuestions = 13;
     			break;
-    		case "Divide and Conquer":
+    		case "Divide \\u0026 Conquer":
     			newTitle = "Divide and Conquer";
     			numberOfQuestionsCompleted = 10;
     			numberOfQuestions = 12;
@@ -187,7 +189,7 @@ public class ThirdController {
     			numberOfQuestionsCompleted = 1;
     			numberOfQuestions = 1;
     			break;
-    		case "Kadane's Algorithm":
+    		case "Kadane\\u0027s Algorithm":
     			newTitle = "Kadane's algorithm";
     			numberOfQuestionsCompleted = 4;
     			numberOfQuestions = 5;
@@ -237,8 +239,7 @@ public class ThirdController {
     			numberOfQuestionsCompleted = 84;
     			numberOfQuestions = 150;
     			break;
-    	}
-    	
+    	}    	
     	
     	questionCategoryLabel.setText(newTitle);
     	topicList.setText(newTitle);
@@ -249,4 +250,6 @@ public class ThirdController {
         drawProgress( (numberOfQuestionsCompleted / numberOfQuestions) * 100);  // draw the progress bar
     	
     }
+    
+//    private void 
 }

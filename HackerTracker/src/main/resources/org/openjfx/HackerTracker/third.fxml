@@ -24,20 +24,20 @@
                      <items>
                      	<MenuItem mnemonicParsing="false" onAction="#switchCategory" text="All questions" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="1D DP" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Array String" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Array / String" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Backtracking" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Search" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Search Tree" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree BFS" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree General" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Bit Manipulation" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Divide and Conquer" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Divide \u0026 Conquer" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph BFS" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph General" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Hashmap" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Heap" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Intervals" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Kadane's Algorithm" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Kadane\u0027s Algorithm" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Linked List" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Math" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Matrix" />
