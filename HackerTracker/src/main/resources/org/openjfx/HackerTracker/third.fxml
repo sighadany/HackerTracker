@@ -23,29 +23,29 @@
                   <MenuButton prefWidth="150" fx:id="topicList" mnemonicParsing="false" text="Select Topic">
                      <items>
                      	<MenuItem mnemonicParsing="false" onAction="#switchCategory" text="All questions" />
-                        <MenuItem fx:id="1D DP" mnemonicParsing="false" onAction="#switchCategory" text="1D DP" />
-                        <MenuItem fx:id="Array / String" mnemonicParsing="false" onAction="#switchCategory" text="Array / String" />
-                        <MenuItem fx:id="Backtracking" mnemonicParsing="false" onAction="#switchCategory" text="Backtracking" />
-                        <MenuItem fx:id="Binary Search" mnemonicParsing="false" onAction="#switchCategory" text="Binary Search" />
-                        <MenuItem fx:id="Binary Search Tree" mnemonicParsing="false" onAction="#switchCategory" text="Binary Search Tree" />
-                        <MenuItem fx:id="Binary Tree BFS" mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree BFS" />
-                        <MenuItem fx:id="Binary Tree General" mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree General" />
-                        <MenuItem fx:id="Bit Manipulation" mnemonicParsing="false" onAction="#switchCategory" text="Bit Manipulation" />
-                        <MenuItem fx:id="Divide \u0026 Conquer" mnemonicParsing="false" onAction="#switchCategory" text="Divide \u0026 Conquer" />
-                        <MenuItem fx:id="Graph BFS" mnemonicParsing="false" onAction="#switchCategory" text="Graph BFS" />
-                        <MenuItem fx:id="Graph General" mnemonicParsing="false" onAction="#switchCategory" text="Graph General" />
-                        <MenuItem fx:id="Hashmap" mnemonicParsing="false" onAction="#switchCategory" text="Hashmap" />
-                        <MenuItem fx:id="Heap" mnemonicParsing="false" onAction="#switchCategory" text="Heap" />
-                        <MenuItem fx:id="Intervals" mnemonicParsing="false" onAction="#switchCategory" text="Intervals" />
-                        <MenuItem fx:id="Kadane\u0027s Algorithm" mnemonicParsing="false" onAction="#switchCategory" text="Kadane\u0027s Algorithm" />
-                        <MenuItem fx:id="Linked List" mnemonicParsing="false" onAction="#switchCategory" text="Linked List" />
-                        <MenuItem fx:id="Math" mnemonicParsing="false" onAction="#switchCategory" text="Math" />
-                        <MenuItem fx:id="Matrix" mnemonicParsing="false" onAction="#switchCategory" text="Matrix" />
-                        <MenuItem fx:id="Multidimensional DP" mnemonicParsing="false" onAction="#switchCategory" text="Multidimensional DP" />
-                        <MenuItem fx:id="Sliding Window" mnemonicParsing="false" onAction="#switchCategory" text="Sliding Window" />
-                        <MenuItem fx:id="Stack" mnemonicParsing="false" onAction="#switchCategory" text="Stack" />
-                        <MenuItem fx:id="Trie" mnemonicParsing="false" onAction="#switchCategory" text="Trie" />
-                        <MenuItem fx:id="Two Pointers" mnemonicParsing="false" onAction="#switchCategory" text="Two Pointers" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="1D DP" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Array / String" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Backtracking" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Search" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Search Tree" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree BFS" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree General" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Bit Manipulation" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Divide \u0026 Conquer" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph BFS" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph General" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Hashmap" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Heap" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Intervals" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Kadane\u0027s Algorithm" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Linked List" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Math" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Matrix" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Multidimensional DP" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Sliding Window" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Stack" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Trie" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Two Pointers" />
                      </items>
                   </MenuButton>
                   <Label fx:id="easyCount" text="Easy: 1">
