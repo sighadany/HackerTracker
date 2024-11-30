@@ -1,5 +1,6 @@
 package org.openjfx.HackerTracker;
 
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.awt.Desktop;
@@ -24,6 +25,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextArea;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -210,6 +212,8 @@ public class PrimaryController {
             questionButton.setUserData( day + ":" + i);
             questionButton.setOnAction(new ShowProblemDetails());
             questionButton.setWrapText(true);
+            questionButton.setUserData(day+i);
+            questionButton.setOnAction(new ShowProblemDetails());
             dayBox.getChildren().add(questionButton);
         }
     }
