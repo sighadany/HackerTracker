@@ -50,7 +50,7 @@ public class ThirdController {
     private final double START_ANGLE = 180;
     
     //this is dummy data that must be replaced by number of completed questions across all topics 
-    private double numberOfQuestionsCompleted = 27;
+    private double numberOfQuestionsCompleted = 84;
     
     //intially we consider all 150 questions
     private double numberOfQuestions = 150;

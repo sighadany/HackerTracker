@@ -10,16 +10,18 @@ public class Problem extends AbstractProblem {
     private SimpleStringProperty notes;
     private boolean isCompleted;
     private LocalDateTime timeOfLastAttempt;
+    private boolean isScheduled;
 
     public Problem(int problemId, int priority, String questionTitle, String topicName, String link, String difficultyLevel,
                    String tag, int difficultyRating, int timeSpentOnQuestion, String notes,
-                   boolean isCompleted, LocalDateTime timeOfLastAttempt) {
+                   boolean isCompleted, LocalDateTime timeOfLastAttempt, boolean isScheduled) {
         super(problemId, priority, questionTitle, topicName, link, difficultyLevel, tag);
         this.difficultyRating = new SimpleIntegerProperty(difficultyRating);
         this.timeSpentOnQuestion = new SimpleIntegerProperty(timeSpentOnQuestion);
         this.notes = new SimpleStringProperty(notes);
         this.isCompleted = isCompleted;
         this.timeOfLastAttempt = timeOfLastAttempt;
+        this.isScheduled = isScheduled;
     }
     
     public int getDifficultyRating() {
@@ -49,9 +51,17 @@ public class Problem extends AbstractProblem {
     public boolean getIsCompleted() {
         return isCompleted;
     }
+    
+    public boolean getIsScheduled() {
+        return isScheduled;
+    }
 
     public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
+    }
+    
+    public void setIsScheduled(boolean isScheduled) {
+        this.isScheduled = isScheduled;
     }
 
     public LocalDateTime getTimeOfLastAttempt() {
@@ -70,6 +80,7 @@ public class Problem extends AbstractProblem {
                 ", notes='" + notes.get() + '\'' +
                 ", isCompleted=" + isCompleted +
                 ", timeOfLastAttempt=" + timeOfLastAttempt +
+                ", isScheduled=" + isScheduled +
                 "} " + super.toString();
     }
 }
