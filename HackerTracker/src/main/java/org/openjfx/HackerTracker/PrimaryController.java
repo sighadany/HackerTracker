@@ -56,6 +56,7 @@ public class PrimaryController {
     public HashMap<String, List<Integer>> problemSchedule;
     private final Scheduler SHARED_DATA = Scheduler.getInstance();
     private Problem selectedProblem;
+    private Button selectedProblemButton;
     
     /**
      * Switches from the main view to the settings view
@@ -238,13 +239,13 @@ public class PrimaryController {
      * @see Scheduler
      */
     private void addQuestionsToCalendar() {
-        updateDayUI(Monday, "Mon", problemSchedule.get("Mon").size());
-        updateDayUI(Tuesday, "Tue", problemSchedule.get("Tue").size());
-        updateDayUI(Wednesday, "Wed", problemSchedule.get("Wed").size());
-        updateDayUI(Thursday, "Thu", problemSchedule.get("Thu").size());
-        updateDayUI(Friday, "Fri", problemSchedule.get("Fri").size());
-        updateDayUI(Saturday, "Sat", problemSchedule.get("Sat").size());
-        updateDayUI(Sunday, "Sun", problemSchedule.get("Sun").size());
+        updateDayUI(Monday, "Mon", problemSchedule.get("Mon").size(), problemSchedule.get("Mon"));
+        updateDayUI(Tuesday, "Tue", problemSchedule.get("Tue").size(), problemSchedule.get("Tue"));
+        updateDayUI(Wednesday, "Wed", problemSchedule.get("Wed").size(), problemSchedule.get("Wed"));
+        updateDayUI(Thursday, "Thu", problemSchedule.get("Thu").size(), problemSchedule.get("Thu"));
+        updateDayUI(Friday, "Fri", problemSchedule.get("Fri").size(), problemSchedule.get("Fri"));
+        updateDayUI(Saturday, "Sat", problemSchedule.get("Sat").size(), problemSchedule.get("Sat"));
+        updateDayUI(Sunday, "Sun", problemSchedule.get("Sun").size(), problemSchedule.get("Sun"));
     }
     
     /**
@@ -255,12 +256,19 @@ public class PrimaryController {
      * @param questionCount the number of questions to add on a specified day
      * @see ShowProblemDetails
      */
-    private void updateDayUI(VBox dayBox, String day, int questionCount) {
+    private void updateDayUI(VBox dayBox, String day, int questionCount, List<Integer> problems) {
+    	
         dayBox.getChildren().clear(); // Clear existing buttons
         for (int i = 1; i <= questionCount; i++) {
             Button questionButton = new Button("Q. " + i);
             questionButton.setWrapText(true);
             questionButton.setUserData(day+":"+i);
+            Problem problem = problemMap.get(problems.get(i-1));
+            
+            if(problem.getIsCompleted()) {
+            	questionButton.setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray; -fx-opacity: 0.5;");
+            }
+            
             questionButton.setOnAction(new ShowProblemDetails());
             dayBox.getChildren().add(questionButton);
         }
@@ -269,6 +277,16 @@ public class PrimaryController {
     private final ChangeListener<Boolean> questionCompletedListener = (observable, oldValue, newValue) -> {
         if (selectedProblem != null) {
             SHARED_DATA.updateProblemCompletionStatus(selectedProblem);
+            
+            if (selectedProblemButton != null) {
+            	if(selectedProblem.getIsCompleted()) {
+            		selectedProblemButton.setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray; -fx-opacity: 0.5;");
+                } else {
+                	selectedProblemButton.setStyle("");
+                }
+            }
+            
+            
         }
     };
 
@@ -370,6 +388,7 @@ public class PrimaryController {
     	    String day = dayAndButton[0];
     	    int button = Integer.parseInt(dayAndButton[1]);
     	    selectedProblem = problemMap.get(problemSchedule.get(day).get(button-1));
+    	    selectedProblemButton = (Button) event.getSource();
     	        	    
     		// Set the details as per the corresponding object in map
     	    if(selectedProblem != null) {
