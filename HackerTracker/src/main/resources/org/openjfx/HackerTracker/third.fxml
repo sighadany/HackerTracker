@@ -31,13 +31,13 @@
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree BFS" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Binary Tree General" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Bit Manipulation" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Divide \u0026 Conquer" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Divide and Conquer" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph BFS" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Graph General" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Hashmap" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Heap" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Intervals" />
-                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Kadane\u0027s Algorithm" />
+                        <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Kadane's Algorithm" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Linked List" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Math" />
                         <MenuItem mnemonicParsing="false" onAction="#switchCategory" text="Matrix" />

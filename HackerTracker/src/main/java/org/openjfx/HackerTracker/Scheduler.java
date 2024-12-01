@@ -1,5 +1,7 @@
 package org.openjfx.HackerTracker;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +15,16 @@ import java.util.Map;
  */
 public class Scheduler {
     private static final Scheduler INSTANCE = new Scheduler();
+//    private static final ProblemTracker TRACKER_INSTANCE = ProblemTracker.getInstance();
 
     private HashMap<String, List<Integer>> questionsPerDay = new HashMap<>();
     private HashMap<Integer, Problem> problemMapping = new HashMap<Integer, Problem>();
+    
+    private final Map<String, List<Problem>> completedByTopic = new HashMap<>();
+	private final Map<String, List<Problem>> notCompletedByTopic = new HashMap<>();
+	private final List<Problem> completed = new ArrayList<>();
+	private final List<Problem> notCompleted = new ArrayList<>();
+    
     
     /**
      * Empty constructor of the Scheduler class
@@ -23,7 +32,7 @@ public class Scheduler {
     private Scheduler() { }
     
     /**
-     * Getter method to provide access to the one Scheduler instance used by all view to 
+     * Getter method to provide access to the one Scheduler instance used by all views to 
      * preserve data and the state of the views
      */
     public static Scheduler getInstance() {
@@ -56,6 +65,11 @@ public class Scheduler {
      */
     public void setProblemMapping( HashMap<Integer, Problem> newSetOfProblemMappings) {
     	this.problemMapping = newSetOfProblemMappings;
+    	
+    	for (Map.Entry<Integer, Problem> entry : this.problemMapping.entrySet()) { 
+    		Problem problem = entry.getValue();
+    		categorizeProblem(problem);
+    	}
     }
     
     /**
@@ -94,5 +108,89 @@ public class Scheduler {
         	lastProblem.setIsScheduled(false);
     	}
     }
+    
+ // Add a problem to the tracker
+    public void categorizeProblem(Problem problem) {
+        String topic = problem.getTopicName();
+        if (problem.getIsCompleted()) {
+            completedByTopic.computeIfAbsent(topic, k -> new ArrayList<>()).add(problem);
+            completed.add(problem);
+        } else {
+            notCompletedByTopic.computeIfAbsent(topic, k -> new ArrayList<>()).add(problem);
+            notCompleted.add(problem);
+        }
+    }
+    
+    /**
+     * Returns all the completed problems
+     */
+    public List<Problem> getCompletedProblems() {
+        return this.completed;
+    }
+    
+    /**
+     * Returns all the non completed problems
+     */
+    public List<Problem> getNotCompletedProblems() {
+        return this.notCompleted;
+    }
+    
+    /**
+     * Returns all the completed problems of a specified topic
+     * 
+     * @param topic the String of the topic name
+     */
+    public List<Problem> getCompletedProblemsByTopic(String topic) {
+        return completedByTopic.getOrDefault(topic, Collections.emptyList());
+    }
+    
+    /**
+     * Returns all the non completed problems of a specified topic
+     * 
+     * @param topic the String of the topic name
+     */
+    public List<Problem> getNotCompletedProblemsByTopic(String topic) {
+        return notCompletedByTopic.getOrDefault(topic, Collections.emptyList());
+    }
+    
+ // Update the completion status of a problem
+    public void updateProblemCompletionStatus(Problem problem) {
+        String topic = problem.getTopicName();
+
+        // Remove from current list
+        if (problem.getIsCompleted()) {
+        	problem.setIsCompleted(false);
+            completedByTopic.getOrDefault(topic, new ArrayList<>()).remove(problem);
+            completed.remove(problem);
+        } else {
+        	problem.setIsCompleted(true);
+            notCompletedByTopic.getOrDefault(topic, new ArrayList<>()).remove(problem);
+            notCompleted.remove(problem);
+        }
+
+        categorizeProblem(problem);
+    }
+    
+    // filter by leetcode difficulty
+    public List<Problem> filterByLeetcodeDifficulty(List<Problem> problems, String difficulty) {
+    	List<Problem> filteredProblems = new ArrayList<>();
+    	for (Problem p : problems) {
+    		if (p.getDifficultyLevel().equals(difficulty)) {
+    			filteredProblems.add(p);
+    		}
+    	}
+//    	System.out.print(problems);
+//    	System.out.print(problems);
+    	return filteredProblems;
+    }
+    
+    @Override
+    public String toString() {
+        return "ProblemTracker{" +
+                "completedByTopic=" + completedByTopic +
+                ", notCompletedByTopic=" + notCompletedByTopic +
+                '}';
+    }
+    
 }
 
