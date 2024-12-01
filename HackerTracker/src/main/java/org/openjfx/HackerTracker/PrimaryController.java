@@ -34,9 +34,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 
 /**
  * Dynamically updates the appearance of the main view. Updates the calendar
@@ -83,6 +85,12 @@ public class PrimaryController {
     private Spinner<Integer> timeSpinner;
     
     @FXML
+    private VBox detailsVBox;
+    
+    @FXML 
+    private Button toggleSubtopics;
+    
+    @FXML
     private VBox Monday;
 
     @FXML
@@ -123,6 +131,48 @@ public class PrimaryController {
     
     @FXML
     private TextArea userNotes; // Notes field
+    
+    @FXML
+    private void toggleSubtopics(ActionEvent event) {
+        
+        if (selectedProblem != null) {
+        	
+        	// Get the button that was clicked
+            Button sourceButton = (Button) event.getSource();
+
+            // Get the HBox containing the button
+            HBox currentHBox = (HBox) sourceButton.getParent();
+
+            // Find the index of the current HBox in the VBox
+            int currentIndex = detailsVBox.getChildren().indexOf(currentHBox);
+            
+        	
+        	if (
+        			currentIndex + 1 < detailsVBox.getChildren().size() &&
+        			detailsVBox.getChildren().get(currentIndex + 1) instanceof HBox &&
+        			detailsVBox.getChildren().get(currentIndex + 1).getId() != null &&
+        			detailsVBox.getChildren().get(currentIndex + 1).getId().equals("toggleTags")) {
+
+                    // Remove the HBox if it's already present
+        		    detailsVBox.getChildren().remove(currentIndex + 1);
+        		    toggleSubtopics.setText("Show subtopics");
+            } else {
+            	toggleSubtopics.setText("Hide subtopics");
+            	// Create a new HBox
+                HBox newHBox = new HBox(10); // 10 is spacing
+                newHBox.setAlignment(Pos.TOP_CENTER);
+                newHBox.setPrefHeight(40);
+                newHBox.setId("toggleTags");
+                
+            	newHBox.getChildren().add(new Label(selectedProblem.getTag()));
+                
+                // Insert the new HBox below the current HBox
+            	detailsVBox.getChildren().add(currentIndex + 1, newHBox);
+            }
+        	
+        }
+        
+    }
     
     /**
      * Sets the current date on the right side of the view
