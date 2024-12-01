@@ -185,9 +185,10 @@ public class Scheduler {
                 }
                 
             }
-        	
-        	this.scheduleWeekNumber = currentWeekNumber;
+
         }
+        
+        this.scheduleWeekNumber = currentWeekNumber;
     }
     
  // Add a problem to the tracker
