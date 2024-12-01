@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import org.openjfx.HackerTracker.App;
-//import org.openjfx.HackerTracker.PrimaryController.ShowProblemDetails;
+import org.openjfx.HackerTracker.PrimaryController.ShowProblemDetails;
 
 /**
  * JavaFX App with a calendar based view that shows details about 

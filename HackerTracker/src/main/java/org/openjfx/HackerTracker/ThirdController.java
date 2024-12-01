@@ -1,7 +1,6 @@
 package org.openjfx.HackerTracker;
 
 import java.io.IOException;
-import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,13 +19,13 @@ public class ThirdController {
 	private final Scheduler SHARED_DATA = Scheduler.getInstance();
 	
 	@FXML
-	private Label easyCount;
+	private Label easyTag;
 	
 	@FXML
-	private Label mediumCount;
+	private Label mediumTag;
 	
 	@FXML
-	private Label hardCount;
+	private Label hardTag;
 	
 	@FXML
 	private Text questionCategoryLabel;
@@ -53,20 +52,10 @@ public class ThirdController {
     private final double START_ANGLE = 180;
     
     //this is dummy data that must be replaced by number of completed questions across all topics 
-    private double numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblems().size();
+    private double numberOfQuestionsCompleted = 84;
     
     //intially we consider all 150 questions
-    private double numberOfQuestions = numberOfQuestionsCompleted +  SHARED_DATA.getNotCompletedProblems().size();
-    
-    //number of easy questions completed
-    private int easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(SHARED_DATA.getCompletedProblems(), "Easy").size();
-    
-  //number of easy questions completed
-    private int mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(SHARED_DATA.getCompletedProblems(), "Medium").size();
-    
-  //number of easy questions completed
-    private int hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(SHARED_DATA.getCompletedProblems(), "Hard").size();
-
+    private double numberOfQuestions = 150;
 
     // Method to draw the progress on the canvas
     public void drawProgress(double percentage) {
@@ -93,16 +82,6 @@ public class ThirdController {
         gc.strokeArc(CENTER_X - RADIUS, CENTER_Y - RADIUS, 2 * RADIUS, 2 * RADIUS, 
                      START_ANGLE, angle, javafx.scene.shape.ArcType.OPEN);
     }
-    
-    
-    public void updateProgressView(String topic) {
-    	List<Problem> problems = SHARED_DATA.getCompletedProblemsByTopic(topic);
-		this.numberOfQuestionsCompleted = problems.size();
-		this.numberOfQuestions = this.numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic(topic).size();
-		this.easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-		this.mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-		this.hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
-    }
 
     // Example: Initialize the progress to 50% when the application starts
     public void initialize() {
@@ -110,12 +89,6 @@ public class ThirdController {
     	// dummy data to get started on milestone view
     	// must be replaced by user progress data
     	// we must initialize numberOfQuestionsCompleted, numberOfQuestions, and  topicList text by reading from file
-    	
-    	easyCount.setText("Easy: " + easyQuestions);
-    	
-    	mediumCount.setText("Medium: " + mediumQuestions);
-    	
-    	hardCount.setText("Hard: " + hardQuestions);
     	
     	// Update the label with the progress 
     	generalProgressLabel.setText(String.format("Progress: %.0f / %.0f", numberOfQuestionsCompleted, numberOfQuestions));
@@ -148,232 +121,133 @@ public class ThirdController {
     		case "1D DP":
     			newTitle = "1D Dynamic Programming";
     			// dummy data, must be replaced with actual user data
-    			updateProgressView("1D DP");
+    			numberOfQuestionsCompleted = 6;
+    			numberOfQuestions = 7;
     			break;
     		case "Array / String":
-    			newTitle = "Array / String";
-    			updateProgressView("Array / String");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Array / String").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Array / String").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			newTitle = "Array String";
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 6;
     			break;
     		case "Backtracking":
     			newTitle = "Backtracking";
-    			updateProgressView("Backtracking");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Backtracking").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Backtracking").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 9;
+    			numberOfQuestions = 14;
     			break;
     		case "Binary Search":
     			newTitle = "Binary Search";
-    			updateProgressView("Binary Search");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Binary Search").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Binary Search").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 10;
+    			numberOfQuestions = 10;
     			break;
     		case "Binary Search Tree":
     			newTitle = "Binary Search Tree";
-    			updateProgressView("Binary Search Tree");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Binary Search Tree").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Binary Search Tree").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 3;
+    			numberOfQuestions = 4;
     			break;
     		case "Binary Tree BFS":
     			newTitle = "Binary Search BFS";
-    			updateProgressView("Binary Tree BFS");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Binary Tree BFS").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Binary Tree BFS").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 7;
+    			numberOfQuestions = 11;
     			break;
     		case "Binary Tree General":
     			newTitle = "Binary Tree General";
-    			updateProgressView("Binary Tree General");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Binary Tree General").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Binary Tree General").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 3;
+    			numberOfQuestions = 8;
     			break;
     		case "Bit Manipulation":
     			newTitle = "Bit Manipulation";
-    			updateProgressView("Bit Manipulation");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Bit Manipulation").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Bit Manipulation").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 8;
+    			numberOfQuestions = 13;
     			break;
-    		case "Divide and Conquer":
+    		case "Divide \\u0026 Conquer":
     			newTitle = "Divide and Conquer";
-    			updateProgressView("Divide & Conquer");
-//    			newTitle = "Divide and Conquer";
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Divide & Conquer").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Divide & Conquer").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 10;
+    			numberOfQuestions = 12;
     			break;
     		case "Graph BFS":
-    			newTitle = "Graph BFS";
-    			updateProgressView("Graph BFS");
-//    			newTitle = "Graph Breadth First Search";
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Graph BFS").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Graph BFS").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			newTitle = "Graph Breadth First Search";
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 3;
     			break;
     		case "Graph General":
     			newTitle = "Graph General";
-    			updateProgressView("Graph General");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Graph General").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Graph General").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 0;
+    			numberOfQuestions = 5;
     			break;
     		case "Hashmap":
     			newTitle = "Hashmap";
-    			updateProgressView("Hashmap");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Hashmap").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Hashmap").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 3;
     			break;
     		case "Heap":
     			newTitle = "Heap";
-    			updateProgressView("Heap");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Heap").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Heap").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 4;
     			break;
     		case "Intervals":
     			newTitle = "Intervals";
-    			updateProgressView("Intervals");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Intervals").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Intervals").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 1;
     			break;
-    		case "Kadane's Algorithm":
+    		case "Kadane\\u0027s Algorithm":
     			newTitle = "Kadane's algorithm";
-    			updateProgressView("Kadane's Algorithm");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Kadane\\u0027s Algorithm").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Kadane's Algorithm").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 4;
+    			numberOfQuestions = 5;
     			break;
     		case "Linked List":
     			newTitle = "Linked List";
-    			updateProgressView("Linked List");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Linked List").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Linked List").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 3;
+    			numberOfQuestions = 5;
     			break;
     		case "Math":
     			newTitle = "Math";
-    			updateProgressView("Math");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Math").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Math").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 5;
+    			numberOfQuestions = 6;
     			break;
     		case "Matrix":
     			newTitle = "Matrix";
-    			updateProgressView("Matrix");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Matrix").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Matrix").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 2;
+    			numberOfQuestions = 4;
     			break;
     		case "Multidimensional DP":
     			newTitle = "Multidimensional Dynamic Programming";
-    			updateProgressView("Multidimensional DP");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Multidimensional DP").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Multidimensional DP").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 2;
+    			numberOfQuestions = 5;
     			break;
     		case "Sliding Window":
     			newTitle = "Sliding Window";
-    			updateProgressView("Sliding Window");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Sliding Window").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Sliding Window").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 1;
+    			numberOfQuestions = 7;
     			break;
     		case "Stack":
     			newTitle = "Stack";
-    			updateProgressView("Stack");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Stack").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Stack").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 3;
+    			numberOfQuestions = 8;
     			break;
     		case "Trie":
     			newTitle = "Trie";
-    			updateProgressView("Trie");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Trie").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Trie").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 3;
+    			numberOfQuestions = 6;
     			break;
     		case "Two Pointers":
     			newTitle = "Two Pointers";
-    			updateProgressView("Two Pointers");
-//    			numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblemsByTopic("Two Pointers").size();
-//    			numberOfQuestions = numberOfQuestionsCompleted + SHARED_DATA.getNotCompletedProblemsByTopic("Two Pointers").size();
-//    			easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-//    			mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-//    			hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 0;
+    			numberOfQuestions = 3;
     			break;
     		default:
     			newTitle = "All 150 questions";
-    			List<Problem> problems = SHARED_DATA.getCompletedProblems();
-    			this.numberOfQuestionsCompleted = problems.size();
-    			this.numberOfQuestions = this.numberOfQuestionsCompleted +  SHARED_DATA.getNotCompletedProblems().size();
-    			this.easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Easy").size();
-    			this.mediumQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Medium").size();
-    			this.hardQuestions = SHARED_DATA.filterByLeetcodeDifficulty(problems, "Hard").size();
+    			numberOfQuestionsCompleted = 84;
+    			numberOfQuestions = 150;
     			break;
     	}    	
     	
     	questionCategoryLabel.setText(newTitle);
     	topicList.setText(newTitle);
     	
-    	easyCount.setText("Easy: " + this.easyQuestions);
-    	
-    	mediumCount.setText("Medium: " + this.mediumQuestions);
-    	
-    	hardCount.setText("Hard: " + this.hardQuestions);
-    	
     	// Update the label with the progress 
-    	generalProgressLabel.setText(String.format("Progress: %.0f / %.0f", this.numberOfQuestionsCompleted, this.numberOfQuestions));
+    	generalProgressLabel.setText(String.format("Progress: %.0f / %.0f", numberOfQuestionsCompleted, numberOfQuestions));
         
-        drawProgress( (this.numberOfQuestionsCompleted / this.numberOfQuestions) * 100);  // draw the progress bar
+        drawProgress( (numberOfQuestionsCompleted / numberOfQuestions) * 100);  // draw the progress bar
     	
     }
     

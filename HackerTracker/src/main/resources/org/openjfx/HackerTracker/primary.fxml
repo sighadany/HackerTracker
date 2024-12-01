@@ -137,7 +137,7 @@
                                     <HBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
                                        <children>
                                           <Label text="Time (in min)" />
-                                          <Spinner fx:id="timeSpinner" editable="true" />
+                                          <Spinner fx:id="timeSpinner" />
                                        </children>
                                     </HBox>
                                     <HBox HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
