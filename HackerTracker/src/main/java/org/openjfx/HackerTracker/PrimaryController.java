@@ -336,6 +336,7 @@ public class PrimaryController {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(json);
             
+            int weekNumber = jsonNode.get("week_number").asInt();
             
             problemSchedule = SHARED_DATA.getQuestionsPerDay();
             JsonNode storedSchedule = jsonNode.get("schedule");
@@ -363,6 +364,8 @@ public class PrimaryController {
             // store the schedule and the questions in an object
             SHARED_DATA.setQuestionsPerDay(problemSchedule);
             SHARED_DATA.setProblemMapping(problemMap);
+            SHARED_DATA.setScheduleWeekNumber(weekNumber);
+            SHARED_DATA.updateSchedule();
             
         } catch (Exception e) {
             throw new RuntimeException(e);

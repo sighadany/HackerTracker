@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.time.LocalDate;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+
 /**
  * Stores the schedule of questions, maintaining one static final instance shared amongst
  * the main view, settings and progress view controllers
@@ -20,10 +24,11 @@ public class Scheduler {
     private HashMap<String, List<Integer>> questionsPerDay = new HashMap<>();
     private HashMap<Integer, Problem> problemMapping = new HashMap<Integer, Problem>();
     
-    private final Map<String, List<Problem>> completedByTopic = new HashMap<>();
-	private final Map<String, List<Problem>> notCompletedByTopic = new HashMap<>();
-	private final List<Problem> completed = new ArrayList<>();
-	private final List<Problem> notCompleted = new ArrayList<>();
+    private Map<String, List<Problem>> completedByTopic = new HashMap<>();
+	private Map<String, List<Problem>> notCompletedByTopic = new HashMap<>();
+	private List<Problem> completed = new ArrayList<>();
+	private List<Problem> notCompleted = new ArrayList<>();
+	private int scheduleWeekNumber;
     
     
     /**
@@ -37,6 +42,20 @@ public class Scheduler {
      */
     public static Scheduler getInstance() {
         return INSTANCE;
+    }
+    
+    /**
+     * Getter method to provide access to the week number of the schedule
+     */
+    public int getScheduleWeekNumber() {
+        return this.scheduleWeekNumber;
+    }
+    
+    /**
+     * Setter method to define the week number of the schedule
+     */
+    public void setScheduleWeekNumber(int newScheduleWeekNumber) {
+    	this.scheduleWeekNumber = newScheduleWeekNumber;
     }
     
     /**
@@ -70,6 +89,38 @@ public class Scheduler {
     		Problem problem = entry.getValue();
     		categorizeProblem(problem);
     	}
+    }
+    
+    /**
+     * Returns all the completed problems
+     */
+    public List<Problem> getCompletedProblems() {
+        return this.completed;
+    }
+    
+    /**
+     * Returns all the non completed problems
+     */
+    public List<Problem> getNotCompletedProblems() {
+        return this.notCompleted;
+    }
+    
+    /**
+     * Returns all the completed problems of a specified topic
+     * 
+     * @param topic the String of the topic name
+     */
+    public List<Problem> getCompletedProblemsByTopic(String topic) {
+        return completedByTopic.getOrDefault(topic, Collections.emptyList());
+    }
+    
+    /**
+     * Returns all the non completed problems of a specified topic
+     * 
+     * @param topic the String of the topic name
+     */
+    public List<Problem> getNotCompletedProblemsByTopic(String topic) {
+        return notCompletedByTopic.getOrDefault(topic, Collections.emptyList());
     }
     
     /**
@@ -109,6 +160,36 @@ public class Scheduler {
     	}
     }
     
+    
+    public void updateSchedule() {
+    	// Get the current date
+        LocalDate currentDate = LocalDate.now();
+        
+        // Get the current week number
+        int currentWeekNumber = currentDate.get(WeekFields.of(Locale.getDefault()).weekOfYear());
+        
+        if (currentWeekNumber > this.scheduleWeekNumber) {
+        	for (Map.Entry<String, List<Integer>> entry : this.questionsPerDay.entrySet()) {
+        		String dayKey = entry.getKey();
+                List<Integer> problemIds = entry.getValue();
+        		List<Integer> problemIdsCopy = new ArrayList<>(entry.getValue());
+
+                
+                for(Integer id : problemIdsCopy) {
+                	Problem problem = this.problemMapping.get(id);
+                	if(problem.getIsCompleted()) {
+                		problemIds.remove(id);
+                		problem.setIsScheduled(false);
+                		scheduleNextProblem(dayKey);
+                	}
+                }
+                
+            }
+        	
+        	this.scheduleWeekNumber = currentWeekNumber;
+        }
+    }
+    
  // Add a problem to the tracker
     public void categorizeProblem(Problem problem) {
         String topic = problem.getTopicName();
@@ -121,37 +202,7 @@ public class Scheduler {
         }
     }
     
-    /**
-     * Returns all the completed problems
-     */
-    public List<Problem> getCompletedProblems() {
-        return this.completed;
-    }
-    
-    /**
-     * Returns all the non completed problems
-     */
-    public List<Problem> getNotCompletedProblems() {
-        return this.notCompleted;
-    }
-    
-    /**
-     * Returns all the completed problems of a specified topic
-     * 
-     * @param topic the String of the topic name
-     */
-    public List<Problem> getCompletedProblemsByTopic(String topic) {
-        return completedByTopic.getOrDefault(topic, Collections.emptyList());
-    }
-    
-    /**
-     * Returns all the non completed problems of a specified topic
-     * 
-     * @param topic the String of the topic name
-     */
-    public List<Problem> getNotCompletedProblemsByTopic(String topic) {
-        return notCompletedByTopic.getOrDefault(topic, Collections.emptyList());
-    }
+  
     
  // Update the completion status of a problem
     public void updateProblemCompletionStatus(Problem problem) {
