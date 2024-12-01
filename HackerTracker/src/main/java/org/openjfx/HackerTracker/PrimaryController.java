@@ -30,6 +30,7 @@ import javafx.scene.control.TextArea;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 
 import javafx.scene.input.MouseEvent;
@@ -215,6 +216,13 @@ public class PrimaryController {
         }
     }
     
+    private final ChangeListener<Boolean> questionCompletedListener = (observable, oldValue, newValue) -> {
+        if (selectedProblem != null) {
+            SHARED_DATA.updateProblemCompletionStatus(selectedProblem);
+        }
+    };
+
+    
     private void addListenersToFields() {
         // Update difficulty rating when changed
         difficultyChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -229,11 +237,13 @@ public class PrimaryController {
             }
         });
         // Update completion status
-        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (selectedProblem != null) {
-                selectedProblem.setIsCompleted(newValue);
-            }
-        });
+        questionCompleted.selectedProperty().addListener(questionCompletedListener);
+//        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
+//            if (selectedProblem != null) {
+//            	//selectedProblem.setIsCompleted(newValue);
+//                SHARED_DATA.updateProblemCompletionStatus(selectedProblem);
+//            }
+//        });
         // Update notes field
         userNotes.textProperty().addListener((observable, oldValue, newValue) -> {
             if (selectedProblem != null) {
@@ -317,7 +327,13 @@ public class PrimaryController {
                 questionTopic.setText(selectedProblem.getTopicName());
                 questionDifficulty.setText(selectedProblem.getDifficultyLevel());
                 hyperLink.setText(selectedProblem.getLink());
+                
+             // Temporarily remove listener to avoid triggering the method
+                questionCompleted.selectedProperty().removeListener(questionCompletedListener);
                 questionCompleted.setSelected(selectedProblem.getIsCompleted());
+                questionCompleted.selectedProperty().addListener(questionCompletedListener);
+                
+                
                 difficultyChoiceBox.getSelectionModel().select(String.valueOf(selectedProblem.getDifficultyRating()));
                 timeSpinner.getValueFactory().setValue(selectedProblem.getTimeSpentOnQuestion());
                 userNotes.setText(selectedProblem.getNotes());
