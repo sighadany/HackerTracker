@@ -184,10 +184,6 @@ public class SecondaryController {
                     	    "-fx-font-weight: bold;"             // Bold text
                     	);
 
-
-                    // Optional: Set wrap text for better appearance
-                    newButton.setWrapText(true);
-
                     // Add the styled button to the container
                     selectedDay.getChildren().add(newButton);
                 }
