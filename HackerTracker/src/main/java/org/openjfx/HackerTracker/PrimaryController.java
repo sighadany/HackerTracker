@@ -206,14 +206,26 @@ public class PrimaryController {
      */
     private void updateDayUI(VBox dayBox, String day, int questionCount) {
         dayBox.getChildren().clear(); // Clear existing buttons
+
         for (int i = 1; i <= questionCount; i++) {
             Button questionButton = new Button("Q. " + i);
-            questionButton.setWrapText(true);
-            questionButton.setUserData(day+":"+i);
+
+            // Apply custom styling
+            questionButton.setStyle(
+            	    "-fx-background-color: #3498db; " +  // Background color
+            	    "-fx-text-fill: white; " +           // Text color
+            	    "-fx-background-radius: 15; " +      // Rounded corners
+            	    "-fx-padding: 10; " +                // Padding
+            	    "-fx-font-family: Arial; " +         // Font family
+            	    "-fx-font-weight: bold;"             // Bold text
+            	);
+
+            questionButton.setUserData(day + ":" + i);
             questionButton.setOnAction(new ShowProblemDetails());
             dayBox.getChildren().add(questionButton);
         }
     }
+
     
     private void addListenersToFields() {
         // Update difficulty rating when changed
