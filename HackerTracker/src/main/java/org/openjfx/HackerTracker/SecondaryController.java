@@ -132,7 +132,7 @@ public class SecondaryController {
         resetDayStyles();
 
         // Highlight the selected day while retaining the border
-        clickedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 1;");
+        clickedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: #000000; -fx-border-width: 1; -fx-border-radius: 22; -fx-background-radius: 22;");
 
     }
     
@@ -140,7 +140,7 @@ public class SecondaryController {
      * Set the default style on all days of the calendar
      */
     private void resetDayStyles() {
-        String defaultStyle = "-fx-background-color: white; -fx-border-color: black; -fx-border-width: 1;";
+        String defaultStyle = "-fx-background-color: white; -fx-background-radius: 22;";
         Monday.setStyle(defaultStyle);
         Tuesday.setStyle(defaultStyle);
         Wednesday.setStyle(defaultStyle);
