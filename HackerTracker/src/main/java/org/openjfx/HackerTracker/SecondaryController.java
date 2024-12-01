@@ -167,29 +167,40 @@ public class SecondaryController {
         String dayId = selectedDay.getId().substring(0, 3);
         int currentCount = selectedDay.getChildren().size();
         
-        // add a question id
-        
-        
         if (newCount > currentCount) {
-        	
             for (int i = currentCount + 1; i <= newCount; i++) {
-            	int status = SHARED_DATA.scheduleNextProblem(dayId);
-            	
-            	if (status == 0) {
-            		Button newButton = new Button("Q. " + i);
+                int status = SHARED_DATA.scheduleNextProblem(dayId);
+
+                if (status == 0) {
+                    Button newButton = new Button("Q. " + i);
+
+                    // Apply styling for rounded corners and color
+                    newButton.setStyle(
+                    	    "-fx-background-color: #3498db; " +  // Background color
+                    	    "-fx-text-fill: white; " +           // Text color
+                    	    "-fx-background-radius: 15; " +      // Rounded corners
+                    	    "-fx-padding: 10; " +                // Padding
+                    	    "-fx-font-family: Arial; " +         // Font family
+                    	    "-fx-font-weight: bold;"             // Bold text
+                    	);
+
+
+                    // Optional: Set wrap text for better appearance
+                    newButton.setWrapText(true);
+
+                    // Add the styled button to the container
                     selectedDay.getChildren().add(newButton);
-            	}
-                
+                }
             }
         } else if (newCount < currentCount) {
-        	
-        	for (int i = newCount; i < currentCount; i++) {
-        		SHARED_DATA.unScheduledProblem(dayId);
-        	}
-        	
+            for (int i = newCount; i < currentCount; i++) {
+                SHARED_DATA.unScheduledProblem(dayId);
+            }
+            
             selectedDay.getChildren().remove(newCount, currentCount);
         }
     }
+
     
     /**
      * Upon clicking on a specific day on the calendar update the value
@@ -246,11 +257,23 @@ public class SecondaryController {
 
             for (int i = 1; i <= questionCount; i++) {
                 Button newButton = new Button("Q. " + i);
+
+                // Apply custom styling
+                newButton.setStyle(
+                	    "-fx-background-color: #3498db; " +  // Background color
+                	    "-fx-text-fill: white; " +           // Text color
+                	    "-fx-background-radius: 15; " +      // Rounded corners
+                	    "-fx-padding: 10; " +                // Padding
+                	    "-fx-font-family: Arial; " +         // Font family
+                	    "-fx-font-weight: bold;"             // Bold text
+                	);
+
                 newButton.setWrapText(true);
                 day.getChildren().add(newButton);
             }
         }
     }
+
 
 
 }
