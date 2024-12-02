@@ -11,7 +11,7 @@ import java.time.temporal.WeekFields;
 import java.util.Locale;
 
 /**
- * Stores the schedule of questions, maintaining one static final instance shared amongst
+ * Stores the schedule of questions, maintains one static final instance shared amongst
  * the main view, settings and progress view controllers
  * 
  * @author Kavin Jha, Dany Sigha
@@ -19,16 +19,14 @@ import java.util.Locale;
  */
 public class Scheduler {
     private static final Scheduler INSTANCE = new Scheduler();
-//    private static final ProblemTracker TRACKER_INSTANCE = ProblemTracker.getInstance();
-
-    private HashMap<String, List<Integer>> questionsPerDay = new HashMap<>();
-    private HashMap<Integer, Problem> problemMapping = new HashMap<Integer, Problem>();
     
-    private Map<String, List<Problem>> completedByTopic = new HashMap<>();
-	private Map<String, List<Problem>> notCompletedByTopic = new HashMap<>();
-	private List<Problem> completed = new ArrayList<>();
-	private List<Problem> notCompleted = new ArrayList<>();
-	private int scheduleWeekNumber;
+    private HashMap<String, List<Integer>> questionsPerDay = new HashMap<>(); // schedule of questions per day
+    private HashMap<Integer, Problem> problemMapping = new HashMap<Integer, Problem>(); // mapping of questions to their identifiers
+    private Map<String, List<Problem>> completedByTopic = new HashMap<>(); // mapping of completed questions to their topic
+	private Map<String, List<Problem>> notCompletedByTopic = new HashMap<>(); // mapping of non completed questions to their topic
+	private List<Problem> completed = new ArrayList<>(); // list of completed questions
+	private List<Problem> notCompleted = new ArrayList<>(); // list of non completed questions
+	private int scheduleWeekNumber; // schedule week number (a value between 1 and 52)
     
     
     /**
@@ -66,21 +64,21 @@ public class Scheduler {
     }
     
     /**
-     * Getter method to provide access to the mapping of problems to their ids
+     * Getter method to provide access to the mapping of problems to their identifiers
      */
     public HashMap<Integer, Problem> getProblemMapping() {
         return this.problemMapping;
     }
     
     /**
-     * Setter method to define the mapping of weekdays to their questions
+     * Setter method to define the mapping of week days to their questions
      */
     public void setQuestionsPerDay( HashMap<String, List<Integer>> newSetOfQuestionsPerDay) {
     	this.questionsPerDay = newSetOfQuestionsPerDay;
     }
     
     /**
-     * Setter method to define the mapping of problems to their ids
+     * Setter method to define the mapping of problems to their identifiers
      */
     public void setProblemMapping( HashMap<Integer, Problem> newSetOfProblemMappings) {
     	this.problemMapping = newSetOfProblemMappings;
@@ -124,12 +122,22 @@ public class Scheduler {
     }
     
     /**
-     * Upon adding questions in the settings view, this method is invoked
-     * to schedule the next question, making it accessible to all the views
+     * Schedules the next unscheduled and incomplete problem for the specified day.
      * 
-     * @param day the three character String representing a weekday 
-     * @see Problem#getIsScheduled
-     * @see Problem#setIsScheduled
+     * This method iterates through the existing problem mappings to find the next problem 
+     * that has not been scheduled and is incomplete. Once such a problem is found, 
+     * it is added to the schedule for the given day, marking it as scheduled.
+     * 
+     * - Updates the problem's scheduled status to true.
+     * - Adds the problem ID to the schedule for the specified day.
+     * - If no suitable problem is found, the method returns -1.
+     * 
+     * @param day A three-character string representing a day of the week (e.g., "Mon").
+     *            It must match the keys used in the daily schedule (`questionsPerDay`).
+     * @return `0` if a problem was successfully scheduled; `-1` if no problem could be scheduled.
+     * 
+     * @see Problem#getIsScheduled Retrieves the problem's scheduling status.
+     * @see Problem#setIsScheduled Updates the problem's scheduling status.
      */
     public int scheduleNextProblem(String day) {
     	for (Map.Entry<Integer, Problem> entry : this.problemMapping.entrySet()) {
@@ -145,11 +153,21 @@ public class Scheduler {
     }
     
     /**
-     * Upon removing questions in the settings view, this method is invoked
-     * to mark a question as unscheduled on the specified day, making it inaccessible to all the views
+     * Unschedules the most recently scheduled problem for the specified day.
      * 
-     * @param day the three character String representing a weekday 
-     * @see Problem#setIsScheduled
+     * This method removes the last problem ID from the schedule for the given day 
+     * (if any problems are scheduled) and updates the corresponding problem's 
+     * scheduled status to `false`. This makes the problem inaccessible to all views.
+     * 
+     * - Checks if there are any problems scheduled for the specified day.
+     * - If there is at least one problem, it removes the most recently scheduled one.
+     * - Updates the problem's scheduled status to reflect its unscheduled state.
+     * - If no problems are scheduled for the day, the method does nothing.
+     * 
+     * @param day A three-character string representing a day of the week (e.g., "Mon").
+     *            It must match the keys used in the daily schedule (`questionsPerDay`).
+     * 
+     * @see Problem#setIsScheduled Updates the problem's scheduling status.
      */
     public void unScheduledProblem(String day) {
     	int numberOfQuestions = this.questionsPerDay.get(day).size();
@@ -160,7 +178,32 @@ public class Scheduler {
     	}
     }
     
-    
+    /**
+     * Updates the weekly schedule to reflect the current week's status.
+     * 
+     * This method performs the following tasks:
+     * - Determines the current week number using the system's date.
+     * - Checks if the current week number is greater than the stored `scheduleWeekNumber`.
+     * - If the week has advanced, iterates through the scheduled questions for each day and:
+     *   - Removes completed problems from the daily schedule.
+     *   - Marks these problems as unscheduled in the problem mapping.
+     *   - Schedules the next available problem for the day to replace the completed one, if applicable.
+     * - Updates the stored `scheduleWeekNumber` to the current week number.
+     * 
+     * **Key operations:**
+     * - Uses `LocalDate.now()` to retrieve the current date.
+     * - Handles scheduling adjustments using a copy of the problem IDs to avoid 
+     *   `ConcurrentModificationException` during iteration.
+     * - Invokes `scheduleNextProblem` to maintain the daily schedule.
+     * 
+     * **Notes:**
+     * - Ensures that completed problems do not persist in the schedule across weeks.
+     * - Maintains synchronization between the schedule and the problem mapping.
+     * - Updates the internal state to match the progression of time.
+     * 
+     * @see Problem#setIsScheduled Updates the scheduling status of a problem.
+     * @see #scheduleNextProblem Schedules a new problem to fill any gaps in the daily schedule.
+     */
     public void updateSchedule() {
     	// Get the current date
         LocalDate currentDate = LocalDate.now();
@@ -191,7 +234,34 @@ public class Scheduler {
         this.scheduleWeekNumber = currentWeekNumber;
     }
     
- // Add a problem to the tracker
+    /**
+     * Categorizes a problem based on its completion status and topic.
+     * 
+     * This method assigns a `Problem` to one of two categories:
+     * - **Completed Problems:** Added to the `completedByTopic` map and the `completed` list.
+     * - **Not Completed Problems:** Added to the `notCompletedByTopic` map and the `notCompleted` list.
+     * 
+     * **Steps:**
+     * - Retrieves the topic name from the provided `Problem` object.
+     * - Checks the completion status of the problem using `Problem#getIsCompleted`.
+     * - If the problem is completed:
+     *   - Adds it to the `completedByTopic` map under its topic. If the topic does not exist in the map, 
+     *     a new list is created and the problem is added to this list.
+     *   - Adds the problem to the global `completed` list.
+     * - If the problem is not completed:
+     *   - Adds it to the `notCompletedByTopic` map under its topic. If the topic does not exist in the map, 
+     *     a new list is created and the problem is added to this list.
+     *   - Adds the problem to the global `notCompleted` list.
+     * 
+     * **Key Notes:**
+     * - Uses `computeIfAbsent` to handle the initialization of topic-based lists within maps.
+     * - Ensures that the problem is correctly categorized based on both completion status and topic.
+     * - Updates global lists (`completed` and `notCompleted`) for quick access to all problems in their respective categories.
+     * 
+     * @param problem The `Problem` object to be categorized.
+     * @see Problem#getIsCompleted Retrieves the completion status of the problem.
+     * @see Problem#getTopicName Retrieves the topic associated with the problem.
+     */
     public void categorizeProblem(Problem problem) {
         String topic = problem.getTopicName();
         if (problem.getIsCompleted()) {
@@ -203,9 +273,33 @@ public class Scheduler {
         }
     }
     
-  
-    
- // Update the completion status of a problem
+    /**
+     * Updates the completion status of a given problem and re-categorizes it based on the new status.
+     * 
+     * This method toggles the completion status of a problem:
+     * - If the problem is currently marked as completed, it is moved to the "not completed" category.
+     * - If the problem is currently marked as not completed, it is moved to the "completed" category.
+     * 
+     * **Steps:**
+     * - Retrieves the topic of the provided `Problem` using `Problem#getTopicName`.
+     * - If the problem is completed:
+     *   - Sets the problem’s completion status to `false` (marking it as not completed).
+     *   - Removes the problem from the `completedByTopic` map and the `completed` list.
+     * - If the problem is not completed:
+     *   - Sets the problem’s completion status to `true` (marking it as completed).
+     *   - Removes the problem from the `notCompletedByTopic` map and the `notCompleted` list.
+     * - After updating the completion status, the problem is re-categorized using the `categorizeProblem` method.
+     * 
+     * **Key Notes:**
+     * - Uses `getOrDefault` to handle cases where a topic may not exist in the corresponding map, ensuring no `NullPointerException` occurs.
+     * - The `categorizeProblem` method is invoked to update the categorization in both the topic-based maps and the global lists based on the new status.
+     * 
+     * @param problem The `Problem` object whose completion status is to be updated.
+     * @see Problem#getIsCompleted Returns the current completion status of the problem.
+     * @see Problem#setIsCompleted Updates the completion status of the problem.
+     * @see Problem#getTopicName Retrieves the topic name associated with the problem.
+     * @see #categorizeProblem Re-categorizes the problem after its completion status has changed.
+     */
     public void updateProblemCompletionStatus(Problem problem) {
         String topic = problem.getTopicName();
 
@@ -223,7 +317,27 @@ public class Scheduler {
         categorizeProblem(problem);
     }
     
-    // filter by leetcode difficulty
+    /**
+     * Filters a list of problems based on the specified Leetcode difficulty level.
+     * 
+     * This method iterates over the provided list of problems and checks if each problem's difficulty level
+     * matches the specified difficulty. If a match is found, the problem is added to a new list of filtered problems.
+     * 
+     * **Steps:**
+     * - Iterates over each `Problem` in the provided list.
+     * - Compares the problem's difficulty level (retrieved via `Problem#getDifficultyLevel`) with the provided difficulty string.
+     * - If the problem's difficulty matches, it is added to the list `filteredProblems`.
+     * - Once all problems have been checked, the filtered list is returned.
+     * 
+     * **Key Notes:**
+     * - The method assumes that `Problem#getDifficultyLevel` returns a string representing the difficulty level, such as "Easy", "Medium", or "Hard".
+     * - The comparison is case-sensitive; ensure the provided difficulty matches the format of the difficulty level exactly.
+     * 
+     * @param problems The list of `Problem` objects to be filtered.
+     * @param difficulty The difficulty level to filter problems by (e.g., "Easy", "Medium", "Hard").
+     * @return A list of `Problem` objects that match the specified difficulty level.
+     * @see Problem#getDifficultyLevel Retrieves the difficulty level of the problem.
+     */
     public List<Problem> filterByLeetcodeDifficulty(List<Problem> problems, String difficulty) {
     	List<Problem> filteredProblems = new ArrayList<>();
     	for (Problem p : problems) {
@@ -231,18 +345,27 @@ public class Scheduler {
     			filteredProblems.add(p);
     		}
     	}
-//    	System.out.print(problems);
-//    	System.out.print(problems);
+
     	return filteredProblems;
     }
     
+    /**
+     * Returns a String version of the class with its properties
+     */
     @Override
     public String toString() {
-        return "ProblemTracker{" +
-                "completedByTopic=" + completedByTopic +
+    	return "Schedule{ " +
+    			"scheduleWeekNumber=" + scheduleWeekNumber +
+    			", questionsPerDay=" + questionsPerDay +
+    			", problemMapping=" + problemMapping +
+                ", completedByTopic=" + completedByTopic +
                 ", notCompletedByTopic=" + notCompletedByTopic +
+                ", completed=" + completed +
+                ", notCompleted=" + notCompleted +
                 '}';
     }
+    
+   
     
 }
 

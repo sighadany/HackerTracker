@@ -44,8 +44,8 @@ import javafx.geometry.Pos;
  * Dynamically updates the appearance of the main view. Updates the calendar
  * with leetcode questions based on a schedule defined by the user.
  * 
- * Provides a view for detailed information about leetcode questions. 
- * This information appears dynamically as questions are selected.
+ * Provides a view for detailed information about scheduled leetcode questions. 
+ * This information appears dynamically as questions are selected on the calendar.
  * 
  * @author Dany Sigha, Sarthak Mallick, Kavin Jha
  * @version 1.0
@@ -80,19 +80,19 @@ public class PrimaryController {
     
     
     @FXML
-    private ChoiceBox<String> difficultyChoiceBox;
+    private ChoiceBox<String> difficultyChoiceBox; // User defined difficulty out of 10
     
     @FXML
-    private Spinner<Integer> timeSpinner;
+    private Spinner<Integer> timeSpinner; // Time spent on question defined by user
     
     @FXML
-    private VBox detailsVBox;
+    private VBox detailsVBox; // Right hand side container of the main view
     
     @FXML 
-    private Button toggleSubtopics;
+    private Button toggleSubtopics; // Show / Hide subtopics
     
     @FXML
-    private VBox Monday;
+    private VBox Monday; // Week day component in the calendar
 
     @FXML
     private VBox Tuesday;
@@ -113,26 +113,32 @@ public class PrimaryController {
     private VBox Sunday;
     
     @FXML 
-    private Text fullDate;
+    private Text fullDate; // Current date
     
     @FXML
-    private Label questionTitle;
+    private Label questionTitle; // Question title
     
     @FXML
-    private CheckBox questionCompleted;
+    private CheckBox questionCompleted; // Question completion status
     
     @FXML
-    private Label questionTopic;
+    private Label questionTopic; // Topic of the question
     
     @FXML
-    private Label questionDifficulty;
+    private Label questionDifficulty; // Leetcode provided difficulty tag
     
     @FXML
-    private Hyperlink hyperLink;
+    private Hyperlink hyperLink; // Link to leetcode question
     
     @FXML
     private TextArea userNotes; // Notes field
     
+    /**
+     * Displays subtopics as hints for the patterns to adopt to solve the question
+     *
+     * @param event an event object that contains information about the object that fired the event
+     * @see ShowProblemDetails Displays question details on the right side of the main view
+     */
     @FXML
     private void toggleSubtopics(ActionEvent event) {
         
@@ -154,12 +160,12 @@ public class PrimaryController {
         			detailsVBox.getChildren().get(currentIndex + 1).getId() != null &&
         			detailsVBox.getChildren().get(currentIndex + 1).getId().equals("toggleTags")) {
 
-                    // Remove the HBox if it's already present
+                    // Remove the HBox with subtopics if it's already present
         		    detailsVBox.getChildren().remove(currentIndex + 1);
         		    toggleSubtopics.setText("Show subtopics");
             } else {
             	toggleSubtopics.setText("Hide subtopics");
-            	// Create a new HBox
+            	// Create a new HBox with subtopics if it is not already there
                 HBox newHBox = new HBox(10); // 10 is spacing
                 newHBox.setAlignment(Pos.TOP_CENTER);
                 newHBox.setPrefHeight(40);
@@ -187,31 +193,33 @@ public class PrimaryController {
     }
     
     /**
-     * Upon loading the main view, set the date, load the leetcode questions,
-     * and initialize the values of the difficulty and time taken inputs.
+     * Upon loading the main view, set the date, load the leetcode questions, display the schedule,
+     * monitor user input, and initialize the values of the difficulty and time taken inputs fields.
      * 
      * @see Scheduler
-     * @see PrimaryController#loadJsonProblems()
-     * @see PrimaryController#addQuestionsToCalendar()
+     * @see PrimaryController#loadJsonProblems() Reads and processes LeetCode problems and their schedule from a JSON file
+     * @see PrimaryController#addQuestionsToCalendar() Reads from the problemSchedule object to retrieve the schedule set by the user
+     * @see PrimaryController#addListenersToFields() Adds listeners to various UI fields to handle user interactions
      */
     @FXML
     public void initialize() {
     	setDate();
     	
     	if (SHARED_DATA.getProblemMapping().size() == 0) {
-    		loadJsonProblemsAndSchedule(); // get the problems and the schedule from the json file
+    		loadJsonProblemsAndSchedule(); // get the problems and the schedule from the json file on program startup
     	}else {
+    		// get the problems and the schedule from shared object when switching between tabs
     		problemSchedule = SHARED_DATA.getQuestionsPerDay(); 
-    		// for now this is an error, but the assigning problems logic should be in the settings page
     		problemMap = SHARED_DATA.getProblemMapping();
     	}
     	
-    	addQuestionsToCalendar(); // get the schedule from the settings page
+    	addQuestionsToCalendar(); // add elements to the calendar based on schedule
     	
+    	// initialize the options of the difficultyChoiceBox
         ObservableList<String> options = FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
         difficultyChoiceBox.setItems(options);
         
-        
+        // monitor user click of the link to open it default browser
         hyperLink.setOnAction(event -> {
             try {
                 // Get the URL from the Hyperlink text
@@ -226,17 +234,18 @@ public class PrimaryController {
             }
         });
         
-     // Define the range and step size
+        // Define the range and step size of the spinner for the time taken on a question
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 180, 30, 1);
         timeSpinner.setValueFactory(valueFactory);
         
+        // monitor user input and store new information
         addListenersToFields();
     }
     
     /**
-     * Read from the problemSchedule object to retrieve the schedule set by the user and populate the calendar
+     * Reads from the problemSchedule object to retrieve the schedule set by the user and populate the calendar
      * 
-     * @see Scheduler
+     * @see Scheduler A class that stores the questions and the question schedule
      */
     private void addQuestionsToCalendar() {
         updateDayUI(Monday, "Mon", problemSchedule.get("Mon").size(), problemSchedule.get("Mon"));
@@ -249,48 +258,103 @@ public class PrimaryController {
     }
     
     /**
-     * Adds question buttons to a day of the week.
+     * Applies a completed style to the provided question button.
+     * Updates the button's appearance to visually indicate the question is completed.
+     *
+     * @param questionButton the button to which the completed style will be applied
+     *                       (e.g., changes opacity, background color, text color, and other styles)
+     */
+    private void setQuestionCompletedStyle(Button questionButton) {
+    	questionButton.setStyle(
+        	    "-fx-background-color: #3498db; " +  // Background color
+        	    "-fx-text-fill: white; " +           // Text color
+        	    "-fx-background-radius: 15; " +      // Rounded corners
+        	    "-fx-padding: 10; " +                // Padding
+        	    "-fx-font-family: Arial; " +         // Font family
+        	    "-fx-font-weight: bold; " +          // Bold text
+        	    "-fx-opacity: 0.5;"                  // Less opaque to indicate completion
+        	);
+    }
+    
+    /**
+     * Resets the provided question button to its default style.
+     * Ensures a consistent appearance for buttons that are not marked as completed.
+     *
+     * @param questionButton the button to which the default style will be applied
+     *                       (e.g., restores full opacity and predefined visual properties)
+     */
+    private void setQuestionDefaultStyle(Button questionButton) {
+    	// Apply custom styling
+        questionButton.setStyle(
+        	    "-fx-background-color: #3498db; " +  // Background color
+        	    "-fx-text-fill: white; " +           // Text color
+        	    "-fx-background-radius: 15; " +      // Rounded corners
+        	    "-fx-padding: 10; " +                // Padding
+        	    "-fx-font-family: Arial; " +         // Font family
+        	    "-fx-font-weight: bold;"             // Bold text
+        	);
+    }
+    
+    /**
+     * Adds question buttons to a day of the week in the calendar.
      *
      * @param dayBox a Vertical Box that represents a day of the week in the UI
      * @param day a String that contains a day of the week
      * @param questionCount the number of questions to add on a specified day
-     * @see ShowProblemDetails
+     * @see ShowProblemDetails Displays question details on the right side of the main view
      */
     private void updateDayUI(VBox dayBox, String day, int questionCount, List<Integer> problems) {
     	
-        dayBox.getChildren().clear(); // Clear existing buttons
-        for (int i = 1; i <= questionCount; i++) {
-            Button questionButton = new Button("Q. " + i);
-            questionButton.setWrapText(true);
-            questionButton.setUserData(day+":"+i);
+        dayBox.getChildren().clear(); // Clear all questions on the calendar
+        
+        for (int i = 1; i <= questionCount; i++) { 
+            Button questionButton = new Button("Q. " + i); // create question button
+            
+            // questionButton.setWrapText(true);
+            
+            setQuestionDefaultStyle(questionButton); // default styling of a question button
+            
+            questionButton.setUserData(day+":"+i); // set question button identifier
             Problem problem = problemMap.get(problems.get(i-1));
             
-            if(problem.getIsCompleted()) {
-            	questionButton.setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray; -fx-opacity: 0.5;");
+            if(problem.getIsCompleted()) { // change question style to indicate it is completed
+            	setQuestionCompletedStyle(questionButton);
             }
             
-            questionButton.setOnAction(new ShowProblemDetails());
-            dayBox.getChildren().add(questionButton);
+            questionButton.setOnAction(new ShowProblemDetails()); // show question details when the question is selected
+            dayBox.getChildren().add(questionButton); // add question to the calendar
         }
     }
     
+    /**
+     * Listener that updates the calendar view to reflect the completion status of a question.
+     * Reduces the opacity of the associated button when the question is marked as completed.
+     *
+     * @param observable the value being monitored for changes (e.g., button click state)
+     * @param oldValue the button's completion status before the change
+     * @param newValue the button's completion status after the change
+     * @see Scheduler#updateProblemCompletionStatus Updates tally of completed and non completed problems
+     */
     private final ChangeListener<Boolean> questionCompletedListener = (observable, oldValue, newValue) -> {
         if (selectedProblem != null) {
             SHARED_DATA.updateProblemCompletionStatus(selectedProblem);
             
             if (selectedProblemButton != null) {
             	if(selectedProblem.getIsCompleted()) {
-            		selectedProblemButton.setStyle("-fx-background-color: lightgray; -fx-text-fill: darkgray; -fx-opacity: 0.5;");
+            		setQuestionCompletedStyle(selectedProblemButton);
                 } else {
-                	selectedProblemButton.setStyle("");
+                	setQuestionDefaultStyle(selectedProblemButton);
                 }
             }
-            
-            
         }
     };
 
-    
+    /**
+     * Adds listeners to various UI fields to handle user interactions and update
+     * the corresponding properties of the selected problem.
+     * 
+     * Ensures that changes made through the UI are reflected in the underlying data model.
+     */
     private void addListenersToFields() {
         // Update difficulty rating when changed
         difficultyChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
@@ -306,12 +370,7 @@ public class PrimaryController {
         });
         // Update completion status
         questionCompleted.selectedProperty().addListener(questionCompletedListener);
-//        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
-//            if (selectedProblem != null) {
-//            	//selectedProblem.setIsCompleted(newValue);
-//                SHARED_DATA.updateProblemCompletionStatus(selectedProblem);
-//            }
-//        });
+
         // Update notes field
         userNotes.textProperty().addListener((observable, oldValue, newValue) -> {
             if (selectedProblem != null) {
@@ -322,12 +381,24 @@ public class PrimaryController {
     
     
     /**
-     * Reads and stores leetcode problems and schedule from the json file
+     * Reads and processes LeetCode problems and their schedule from a JSON file.
+     * 
+     * This method parses a JSON file containing a list of LeetCode problems and a weekly schedule,
+     * then updates the shared data model with the parsed information. 
+     * 
+     * - Extracts the current week number and updates the schedule week.
+     * - Parses and maps daily question IDs to a schedule.
+     * - Converts problem details into `Problem` objects and populates a problem mapping.
+     * 
+     * Updates the shared data store to reflect the loaded problems and schedule.
      *
-     * @throws RuntimeException if the json file cannot be read
-     * @see Problem
-     * @see Scheduler
-     * @see Scheduler
+     * @throws RuntimeException if the JSON file cannot be read or parsed
+     * @see Problem Represents individual LeetCode problems.
+     * @see Scheduler#getQuestionsPerDay Retrieves the current schedule
+     * @see Scheduler#setQuestionsPerDay(HashMap<String, List<Integer>>) Updates the daily schedule.
+     * @see Scheduler#setProblemMapping(HashMap<Integer, Problem>) Maps problem IDs to `Problem` objects.
+     * @see Scheduler#setScheduleWeekNumber(int) Sets the current week number for the schedule.
+     * @see Schedule#updateSchedule() Synchronizes the schedule with the current week.
      */
     private void loadJsonProblemsAndSchedule() {
         try {
@@ -335,10 +406,11 @@ public class PrimaryController {
 
             ObjectMapper mapper = new ObjectMapper();
             JsonNode jsonNode = mapper.readTree(json);
-            
-            int weekNumber = jsonNode.get("week_number").asInt();
+                        
+            int weekNumber = jsonNode.get("week_number").asInt(); // retrieve the week number of the schedule
             
             problemSchedule = SHARED_DATA.getQuestionsPerDay();
+            
             JsonNode storedSchedule = jsonNode.get("schedule");
             
          // get the schedule from the json file
@@ -348,7 +420,7 @@ public class PrimaryController {
                         ? dayNode.toString().replace("[", "").replace("]", "").trim().split(",")
                         : new String[0]; // Return an empty array if it's an empty list or non-existent
             	List<Integer> integerList = Arrays.stream(questionIds).map(s -> Integer.parseInt(s) ).collect(Collectors.toList());            	
-            	problemSchedule.put(day, integerList);
+            	problemSchedule.put(day, integerList); // store the schedule in the json
             		            	
             }
             
@@ -358,10 +430,10 @@ public class PrimaryController {
             	Problem problem = new Problem(problemId, 0 , p.get("topic_question_questionname").asText(), p.get("topic_name").asText(), 
             			p.get("topic_question_page").asText(), p.get("topic_question_difficulty").asText(),
             			p.get("subtopic").asText(), p.get("difficultyRating").asInt(), p.get("timeSpentOnQuestion").asInt(), p.get("notes").asText(), p.get("isCompleted").asBoolean(), null, p.get("isScheduled").asBoolean() );
-            	problemMap.put(problemId, problem);
+            	problemMap.put(problemId, problem); // store the questions in the json
             }
             
-            // store the schedule and the questions in an object
+            // store the week number, the schedule and the questions in a the shared data store
             SHARED_DATA.setQuestionsPerDay(problemSchedule);
             SHARED_DATA.setProblemMapping(problemMap);
             SHARED_DATA.setScheduleWeekNumber(weekNumber);

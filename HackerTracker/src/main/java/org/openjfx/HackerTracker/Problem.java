@@ -133,7 +133,7 @@ public class Problem extends AbstractProblem {
     }
     
     /**
-     * Returns a String version of the class with it properties
+     * Returns a String version of the class with its properties
      * @see AbstractProblem
      */
     @Override
