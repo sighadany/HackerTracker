@@ -178,7 +178,7 @@ public class ThirdController {
     	if (numberOfQuestionsCompleted > 0) {
     		weeksToComplete = (int)((150-numberOfQuestionsCompleted)*(weeksPassed+1)/numberOfQuestionsCompleted);
     	}
-		timeToComplete.setText(weeksToComplete+" Weeks Required");
+		  timeToComplete.setText(weeksToComplete+" Weeks Required");
 
     	// Update the progress label with the progress 
     	generalProgressLabel.setText(String.format("Progress: %.0f / %.0f", numberOfQuestionsCompleted, numberOfQuestions));
