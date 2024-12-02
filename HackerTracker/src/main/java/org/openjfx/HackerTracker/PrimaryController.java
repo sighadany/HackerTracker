@@ -13,6 +13,8 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -350,6 +352,55 @@ public class PrimaryController {
         }
     };
 
+    private void saveToJson() {
+        try {
+            // Create a new ObjectMapper
+            ObjectMapper mapper = new ObjectMapper();
+
+            // Create a root node
+            ObjectNode root = mapper.createObjectNode();
+
+            // Add week number
+            root.put("week_number", SHARED_DATA.getScheduleWeekNumber());
+
+            // Add schedule (problemSchedule)
+            ObjectNode scheduleNode = mapper.createObjectNode();
+            for (String day : SHARED_DATA.getQuestionsPerDay().keySet()) {
+                List<Integer> questions = SHARED_DATA.getQuestionsPerDay().get(day);
+                ArrayNode questionArray = scheduleNode.putArray(day);
+                for (Integer questionId : questions) {
+                    questionArray.add(questionId);
+                }
+            }
+            root.set("schedule", scheduleNode);
+
+            // Add problems
+            ArrayNode problemsArray = root.putArray("problems");
+            for (Problem problem : problemMap.values()) {
+                ObjectNode problemNode = mapper.createObjectNode();
+                problemNode.put("Problem_id", problem.getProblemId());
+                problemNode.put("topic_question_questionname", problem.getQuestionTitle());
+                problemNode.put("topic_name", problem.getTopicName());
+                problemNode.put("topic_question_page", problem.getLink());
+                problemNode.put("topic_question_difficulty", problem.getDifficultyLevel());
+                problemNode.put("subtopic", problem.getTag());
+                problemNode.put("difficultyRating", problem.getDifficultyRating());
+                problemNode.put("timeSpentOnQuestion", problem.getTimeSpentOnQuestion());
+                problemNode.put("notes", problem.getNotes());
+                problemNode.put("isCompleted", problem.getIsCompleted());
+                problemNode.put("isScheduled", problem.getIsScheduled());
+                problemsArray.add(problemNode);
+            }
+
+            // Write the JSON file
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("../leetcode_problems.json").toFile(), root);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * Adds listeners to various UI fields to handle user interactions and update
      * the corresponding properties of the selected problem.
@@ -357,28 +408,36 @@ public class PrimaryController {
      * Ensures that changes made through the UI are reflected in the underlying data model.
      */
     private void addListenersToFields() {
-        // Update difficulty rating when changed
         difficultyChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (selectedProblem != null && newValue != null) {
                 selectedProblem.setDifficultyRating(Integer.parseInt(newValue));
+                saveToJson();
             }
         });
-        // Update time spent when the spinner value changes
+
         timeSpinner.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (selectedProblem != null) {
                 selectedProblem.setTimeSpentOnQuestion(newValue);
+                saveToJson();
             }
         });
-        // Update completion status
-        questionCompleted.selectedProperty().addListener(questionCompletedListener);
 
-        // Update notes field
+        questionCompleted.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (selectedProblem != null) {
+                selectedProblem.setIsCompleted(newValue);
+                saveToJson();
+            }
+        });
+
         userNotes.textProperty().addListener((observable, oldValue, newValue) -> {
             if (selectedProblem != null) {
                 selectedProblem.setNotes(newValue);
+                saveToJson();
             }
         });
     }
+
+
     
     
     /**
