@@ -127,7 +127,7 @@
                <children>
                  <!--  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="40.0" layoutX="-9.0" layoutY="-8.0" stroke="BLACK" strokeType="INSIDE" width="357.0" /> -->
                  
-                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="79.8" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 22;"  vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.8">
+                  <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutY="79.8" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-background-radius: 22;" vbarPolicy="AS_NEEDED" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.8">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0">
                            <children>
@@ -206,7 +206,7 @@
                       </AnchorPane>
                     </content>
                   </ScrollPane>
-                  <HBox prefHeight="42.0" prefWidth="219.0" spacing="30.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="6.0">
+                  <HBox prefHeight="42.0" prefWidth="219.0" spacing="30.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="10.0">
                      <children>
                      	<Button id="homeButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 22;">
                            <graphic>
