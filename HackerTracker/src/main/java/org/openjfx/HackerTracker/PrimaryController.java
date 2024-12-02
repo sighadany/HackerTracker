@@ -411,6 +411,9 @@ public class PrimaryController {
             JsonNode jsonNode = mapper.readTree(json);
                         
             int weekNumber = jsonNode.get("week_number").asInt(); // retrieve the week number of the schedule
+            int firstWeekNumber = jsonNode.get("first_week_number").asInt(); // retrieve the week number of the schedule
+            if (firstWeekNumber == 0) firstWeekNumber = weekNumber;
+
             
             problemSchedule = SHARED_DATA.getQuestionsPerDay();
             
@@ -439,6 +442,7 @@ public class PrimaryController {
             // store the week number, the schedule and the questions in a the shared data store
             SHARED_DATA.setQuestionsPerDay(problemSchedule);
             SHARED_DATA.setProblemMapping(problemMap);
+            SHARED_DATA.setFirstWeekNumber(firstWeekNumber);
             SHARED_DATA.setScheduleWeekNumber(weekNumber);
             SHARED_DATA.updateSchedule();
             

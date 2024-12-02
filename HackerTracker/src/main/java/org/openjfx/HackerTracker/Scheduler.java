@@ -33,6 +33,7 @@ public class Scheduler {
 	private Map<String, List<Problem>> notCompletedByTopic = new HashMap<>(); // mapping of non completed questions to their topic
 	private List<Problem> completed = new ArrayList<>(); // list of completed questions
 	private List<Problem> notCompleted = new ArrayList<>(); // list of non completed questions
+	private int firstWeekNumber; // first week of solving problems
 	private int scheduleWeekNumber; // schedule week number (a value between 1 and 52)
     
     
@@ -47,6 +48,20 @@ public class Scheduler {
      */
     public static Scheduler getInstance() {
         return INSTANCE;
+    }
+    
+    /**
+     * Getter method to provide access to the first week number of the schedule
+     */
+    public int getFirstWeekNumber() {
+        return this.firstWeekNumber;
+    }
+    
+    /**
+     * Setter method to define the first week number of the schedule
+     */
+    public void setFirstWeekNumber(int firstWeekNumber) {
+    	this.firstWeekNumber = firstWeekNumber;
     }
     
     /**
@@ -380,6 +395,9 @@ public class Scheduler {
 
             // Create a root node
             ObjectNode root = mapper.createObjectNode();
+            
+            // Add first week number
+            root.put("first_week_number", this.getFirstWeekNumber());
 
             // Add week number
             root.put("week_number", this.getScheduleWeekNumber());
