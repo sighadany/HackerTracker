@@ -10,6 +10,13 @@ import java.time.LocalDate;
 import java.time.temporal.WeekFields;
 import java.util.Locale;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import java.nio.file.Paths;
+import java.io.IOException;
+
+
 /**
  * Stores the schedule of questions, maintains one static final instance shared amongst
  * the main view, settings and progress view controllers
@@ -364,6 +371,58 @@ public class Scheduler {
                 ", notCompleted=" + notCompleted +
                 '}';
     }
+    
+    
+    public void saveToJson() {
+        try {
+            // Create a new ObjectMapper
+            ObjectMapper mapper = new ObjectMapper();
+
+            // Create a root node
+            ObjectNode root = mapper.createObjectNode();
+
+            // Add week number
+            root.put("week_number", this.getScheduleWeekNumber());
+
+            // Add schedule (questionsPerDay)
+            ObjectNode scheduleNode = mapper.createObjectNode();
+            for (String day : this.getQuestionsPerDay().keySet()) {
+                List<Integer> questions = this.getQuestionsPerDay().get(day);
+                ArrayNode questionArray = scheduleNode.putArray(day);
+                for (Integer questionId : questions) {
+                    questionArray.add(questionId);
+                }
+            }
+            root.set("schedule", scheduleNode);
+
+            // Add problems
+            ArrayNode problemsArray = root.putArray("problems");
+            for (Problem problem : this.getProblemMapping().values()) {
+                ObjectNode problemNode = mapper.createObjectNode();
+                problemNode.put("Problem_id", problem.getProblemId());
+                problemNode.put("topic_question_questionname", problem.getQuestionTitle());
+                problemNode.put("topic_name", problem.getTopicName());
+                problemNode.put("topic_question_page", problem.getLink());
+                problemNode.put("topic_question_difficulty", problem.getDifficultyLevel());
+                problemNode.put("subtopic", problem.getTag());
+                problemNode.put("difficultyRating", problem.getDifficultyRating());
+                problemNode.put("timeSpentOnQuestion", problem.getTimeSpentOnQuestion());
+                problemNode.put("notes", problem.getNotes());
+                problemNode.put("isCompleted", problem.getIsCompleted());
+                problemNode.put("isScheduled", problem.getIsScheduled());
+                problemsArray.add(problemNode);
+            }
+
+            // Write the JSON file
+            mapper.writerWithDefaultPrettyPrinter().writeValue(Paths.get("../leetcode_problems.json").toFile(), root);
+
+            System.out.println("Data saved successfully!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     
    
     

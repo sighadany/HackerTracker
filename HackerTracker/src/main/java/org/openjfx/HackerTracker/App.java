@@ -49,6 +49,18 @@ public class App extends Application {
         scene.setRoot(loadFXML(fxml));
     }
     
+    
+    @Override
+    public void stop() throws Exception {
+        // Save data before closing
+        Scheduler scheduler = Scheduler.getInstance();
+        if (scheduler != null) {
+            scheduler.saveToJson();
+        }
+        super.stop();
+    }
+    
+    
     /**
      * load and initialize an FXML file into the JavaFX application
      *
