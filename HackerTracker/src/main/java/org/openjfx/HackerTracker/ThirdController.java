@@ -30,6 +30,9 @@ public class ThirdController {
 	private final Scheduler SHARED_DATA = Scheduler.getInstance();
 	
 	@FXML
+	private Label timeToComplete; // The estimated weeks needed to complete
+	
+	@FXML
 	private Label easyCount; // The count of the easy questions completed
 	
 	@FXML
@@ -66,6 +69,8 @@ public class ThirdController {
     private double numberOfQuestionsCompleted = SHARED_DATA.getCompletedProblems().size();
     
     private double numberOfQuestions = numberOfQuestionsCompleted +  SHARED_DATA.getNotCompletedProblems().size();
+    
+    private double weeksPassed = SHARED_DATA.getScheduleWeekNumber() - SHARED_DATA.getFirstWeekNumber();
     
     //number of easy questions completed
     private int easyQuestions = SHARED_DATA.filterByLeetcodeDifficulty(SHARED_DATA.getCompletedProblems(), "Easy").size();
@@ -169,6 +174,14 @@ public class ThirdController {
     	
     	hardCount.setText("Hard: " + hardQuestions);
     	
+    	int weeksToComplete;
+    	if (weeksPassed > 0 && numberOfQuestionsCompleted > 0) {
+    		weeksToComplete = (int)((150-numberOfQuestionsCompleted)*weeksPassed/numberOfQuestionsCompleted);
+    	} else {
+    		weeksToComplete = 15;
+    	}
+		timeToComplete.setText(weeksToComplete+" Weeks Required");
+
     	// Update the progress label with the progress 
     	generalProgressLabel.setText(String.format("Progress: %.0f / %.0f", numberOfQuestionsCompleted, numberOfQuestions));
         
