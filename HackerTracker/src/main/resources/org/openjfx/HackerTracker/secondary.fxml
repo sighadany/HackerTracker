@@ -24,7 +24,8 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mon" VBox.vgrow="ALWAYS">
                            <font>
                               <Font name="Arial Bold" size="20.0" />
-                           </font></Text>
+                           </font>
+                        </Text>
                         <VBox fx:id="Monday" alignment="TOP_CENTER" onMouseClicked="#handleDayClick" prefHeight="235.0" prefWidth="43.0" spacing="20.0" style="-fx-background-color: white; -fx-background-radius: 22;" VBox.vgrow="ALWAYS">
                            <padding>
                               <Insets top="20.0" />

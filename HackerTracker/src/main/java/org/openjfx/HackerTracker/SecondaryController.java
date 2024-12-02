@@ -4,17 +4,11 @@ import java.io.IOException;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.collections.FXCollections;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -35,14 +29,13 @@ public class SecondaryController {
 	
 	private VBox selectedDay;
 	private int questionIndex;
-//	private Map<String, Integer> questionsPerDay = new HashMap<>();
 	private final Scheduler SHARED_DATA = Scheduler.getInstance();
     
     @FXML
-    private Spinner<Integer> numberOfQuestions;
+    private Spinner<Integer> numberOfQuestions; // Number of questions set by user
     
     @FXML
-    private VBox Monday;
+    private VBox Monday; // Week day component in the calendar
 
     @FXML
     private VBox Tuesday;
@@ -63,7 +56,7 @@ public class SecondaryController {
     private VBox Sunday;
     
     @FXML 
-    private Text fullDate;
+    private Text fullDate; // Current date
     
     /**
      * Add question button to the selected day
@@ -97,11 +90,6 @@ public class SecondaryController {
         App.setRoot("third");
     }
 
-    // Call this when switching *back* to the settings view
-//    public void refreshSettingsView() {
-//        refreshDayViews(); // Refresh the UI with the shared state
-//    }
-
 
     /**
      * Sets the current date on the right side of the view
@@ -132,7 +120,8 @@ public class SecondaryController {
         resetDayStyles();
 
         // Highlight the selected day while retaining the border
-        clickedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: #000000; -fx-border-width: 1; -fx-border-radius: 22; -fx-background-radius: 22;");
+//        clickedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 1;");
+        selectedDay.setStyle("-fx-background-color: lightgray; -fx-border-color: #000000; -fx-border-width: 1; -fx-border-radius: 22; -fx-background-radius: 22;");
 
     }
     
@@ -140,7 +129,7 @@ public class SecondaryController {
      * Set the default style on all days of the calendar
      */
     private void resetDayStyles() {
-        String defaultStyle = "-fx-background-color: white; -fx-background-radius: 22;";
+    	String defaultStyle = "-fx-background-color: white; -fx-background-radius: 22;";
         Monday.setStyle(defaultStyle);
         Tuesday.setStyle(defaultStyle);
         Wednesday.setStyle(defaultStyle);
@@ -169,22 +158,16 @@ public class SecondaryController {
         
         if (newCount > currentCount) {
             for (int i = currentCount + 1; i <= newCount; i++) {
-                int status = SHARED_DATA.scheduleNextProblem(dayId);
-
-                if (status == 0) {
-                    Button newButton = new Button("Q. " + i);
-
-                    // Apply styling for rounded corners and color
-                    newButton.setStyle(
-                    	    "-fx-background-color: #3498db; " +  // Background color
-                    	    "-fx-text-fill: white; " +           // Text color
-                    	    "-fx-background-radius: 15; " +      // Rounded corners
-                    	    "-fx-padding: 10; " +                // Padding
-                    	    "-fx-font-family: Arial; " +         // Font family
-                    	    "-fx-font-weight: bold;"             // Bold text
-                    	);
-
-                    // Add the styled button to the container
+            	int status = SHARED_DATA.scheduleNextProblem(dayId);
+            	
+            	if (status == 0) {
+            		Button newButton = new Button("Q. " + i);
+            		
+            		// Apply styling for rounded corners and color
+            		setQuestionDefaultStyle(newButton);
+                    
+                    newButton.setWrapText(true);
+                    
                     selectedDay.getChildren().add(newButton);
                 }
             }
@@ -197,6 +180,24 @@ public class SecondaryController {
         }
     }
 
+    
+    /**
+     * Sets the provided question button to its default style.
+     *
+     * @param questionButton the button to which the default style will be applied
+     *                       (e.g., restores full opacity and predefined visual properties)
+     */
+    private void setQuestionDefaultStyle(Button questionButton) {
+    	// Apply custom styling
+        questionButton.setStyle(
+        	    "-fx-background-color: #3498db; " +  // Background color
+        	    "-fx-text-fill: white; " +           // Text color
+        	    "-fx-background-radius: 15; " +      // Rounded corners
+        	    "-fx-padding: 10; " +                // Padding
+        	    "-fx-font-family: Arial; " +         // Font family
+        	    "-fx-font-weight: bold;"             // Bold text
+        	);
+    }
     
     /**
      * Upon clicking on a specific day on the calendar update the value
@@ -253,17 +254,7 @@ public class SecondaryController {
 
             for (int i = 1; i <= questionCount; i++) {
                 Button newButton = new Button("Q. " + i);
-
-                // Apply custom styling
-                newButton.setStyle(
-                	    "-fx-background-color: #3498db; " +  // Background color
-                	    "-fx-text-fill: white; " +           // Text color
-                	    "-fx-background-radius: 15; " +      // Rounded corners
-                	    "-fx-padding: 10; " +                // Padding
-                	    "-fx-font-family: Arial; " +         // Font family
-                	    "-fx-font-weight: bold;"             // Bold text
-                	);
-
+                setQuestionDefaultStyle(newButton);
                 newButton.setWrapText(true);
                 day.getChildren().add(newButton);
             }
