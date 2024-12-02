@@ -174,11 +174,9 @@ public class ThirdController {
     	
     	hardCount.setText("Hard: " + hardQuestions);
     	
-    	int weeksToComplete;
-    	if (weeksPassed > 0 && numberOfQuestionsCompleted > 0) {
-    		weeksToComplete = (int)((150-numberOfQuestionsCompleted)*weeksPassed/numberOfQuestionsCompleted);
-    	} else {
-    		weeksToComplete = 15;
+    	int weeksToComplete = 20;
+    	if (numberOfQuestionsCompleted > 0) {
+    		weeksToComplete = (int)((150-numberOfQuestionsCompleted)*(weeksPassed+1)/numberOfQuestionsCompleted);
     	}
 		timeToComplete.setText(weeksToComplete+" Weeks Required");
 
